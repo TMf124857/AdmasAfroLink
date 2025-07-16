@@ -180,6 +180,16 @@ docker-compose exec -T db psql -U odoo odoo < backup.sql
 2. **Permission issues**: Check file permissions in mounted volumes
 3. **Database connection**: Verify PostgreSQL is running and accessible
 4. **Memory issues**: Adjust worker and memory settings in `odoo.conf`
+5. **Log directory error**: Create logs directory with proper permissions:
+   ```bash
+   mkdir -p logs
+   chmod 755 logs
+   ```
+6. **Redis memory warning**: Enable memory overcommit (Ubuntu):
+   ```bash
+   echo 'vm.overcommit_memory = 1' | sudo tee -a /etc/sysctl.conf
+   sudo sysctl vm.overcommit_memory=1
+   ```
 
 ### Useful Commands:
 ```bash
