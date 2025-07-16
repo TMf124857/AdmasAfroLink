@@ -58,11 +58,11 @@ services:
       - odoo_network
     command: ["odoo", "--config=/etc/odoo/odoo.conf"]
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8069/web/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8069/web/database/selector"] 
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 120s
+      retries: 5
+      start_period: 180s
     deploy:
       resources:
         limits:

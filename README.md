@@ -14,8 +14,19 @@ This repository contains a complete Docker Compose setup for deploying Odoo Ente
    docker-compose up -d
    ```
 
-3. **Access Odoo:**
+3. **Initialize the database (first time only):**
+   ```bash
+   # Linux/Mac
+   chmod +x init-odoo.sh
+   ./init-odoo.sh
+   
+   # Windows
+   init-odoo.bat
+   ```
+
+4. **Access Odoo:**
    - Odoo: http://localhost:8069
+   - Default credentials: admin / admin123
    - pgAdmin: http://localhost:5050 (optional, use profile `tools`)
 
 ## 📁 Project Structure

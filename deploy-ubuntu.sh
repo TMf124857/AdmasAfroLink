@@ -241,8 +241,29 @@ deploy_services() {
     print_status "Pulling Docker images..."
     docker-compose pull
     
-    # Start services
-    print_status "Starting services..."
+    # Start database first
+    print_status "Starting database service..."
+    docker-compose up -d db redis
+    
+    # Wait for database to be ready
+    print_status "Waiting for database to be ready..."
+    sleep 20
+    
+    # Check if database is initialized
+    print_status "Checking database initialization..."
+    if ! docker-compose exec -T db psql -U odoo -d odoo -c "\dt" | grep -q "ir_module_module"; then
+        print_status "Database not initialized. Initializing with base modules..."
+        
+        # Start Odoo with database initialization
+        docker-compose run --rm odoo odoo --config=/etc/odoo/odoo.conf -i base --stop-after-init
+        
+        print_status "Database initialized successfully"
+    else
+        print_status "Database already initialized"
+    fi
+    
+    # Start all services
+    print_status "Starting all services..."
     docker-compose up -d
     
     # Wait for services to be ready
@@ -256,7 +277,31 @@ deploy_services() {
     print_status "Odoo will be available at: http://$(hostname -I | awk '{print $1}'):8069"
 }
 
-# Function to show post-deployment information
+# Function to initialize database
+init_database() {
+    print_header "INITIALIZING ODOO DATABASE"
+    
+    # Check if services are running
+    if ! docker-compose ps | grep -q "Up"; then
+        print_error "Services are not running. Please start them first with: $0 deploy"
+        exit 1
+    fi
+    
+    # Stop Odoo service if running
+    print_status "Stopping Odoo service..."
+    docker-compose stop odoo
+    
+    # Initialize database
+    print_status "Initializing database with base modules..."
+    docker-compose run --rm odoo odoo --config=/etc/odoo/odoo.conf -i base --stop-after-init
+    
+    # Start Odoo service
+    print_status "Starting Odoo service..."
+    docker-compose start odoo
+    
+    print_status "Database initialized successfully!"
+    print_status "You can now access Odoo at: http://$(hostname -I | awk '{print $1}'):8069"
+}
 show_post_deployment_info() {
     print_header "POST-DEPLOYMENT INFORMATION"
     
@@ -301,6 +346,7 @@ show_help() {
     echo "  install-deps    - Install Docker and dependencies"
     echo "  setup          - Setup environment and directories"
     echo "  deploy         - Deploy Odoo Enterprise services"
+    echo "  init-db        - Initialize Odoo database with base modules"
     echo "  full-install   - Complete installation (deps + setup + deploy)"
     echo "  optimize       - Optimize system for Docker"
     echo "  firewall       - Configure firewall"
@@ -311,6 +357,7 @@ show_help() {
     echo "Examples:"
     echo "  $0 full-install    # Complete installation"
     echo "  $0 deploy          # Deploy services only"
+    echo "  $0 init-db         # Initialize database manually"
     echo "  $0 status          # Check service status"
 }
 
@@ -335,6 +382,11 @@ main() {
             check_docker_compose
             deploy_services
             show_post_deployment_info
+            ;;
+        "init-db")
+            check_docker
+            check_docker_compose
+            init_database
             ;;
         "full-install")
             check_root
