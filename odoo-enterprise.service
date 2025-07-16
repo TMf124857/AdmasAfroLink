@@ -1,0 +1,31 @@
+[Unit]
+Description=Odoo Enterprise Docker Compose
+Requires=docker.service
+After=docker.service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/odoo-enterprise
+ExecStart=/usr/local/bin/docker-compose up -d
+ExecStop=/usr/local/bin/docker-compose down
+ExecReload=/usr/local/bin/docker-compose restart
+TimeoutStartSec=300
+TimeoutStopSec=300
+
+# Restart settings
+Restart=on-failure
+RestartSec=10
+
+# Security settings
+User=odoo
+Group=odoo
+
+# Environment
+Environment=COMPOSE_HTTP_TIMEOUT=300
+Environment=DOCKER_CLIENT_TIMEOUT=300
+
+[Install]
+WantedBy=multi-user.target
