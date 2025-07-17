@@ -46,7 +46,7 @@ services:
       - odoo_web_data:/var/lib/odoo
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
-      - ./enterprise:/mnt/enterprise-addons
+      - ./enterprise:/mnt/enterprise/addons
       - ./logs:/var/log/odoo
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
