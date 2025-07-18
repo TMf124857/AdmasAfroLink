@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sample_enterprise_menu" model="ir.ui.menu">
+        <field name="name">Sample Enterprise</field>
+        <field name="sequence">100</field>
+        <field name="web_icon">sample_enterprise,static/description/icon.png</field>
+    </record>
+    
+    <record id="action_sample_enterprise" model="ir.actions.act_window">
+        <field name="name">Sample Enterprise</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_is_company': 1}</field>
+        <field name="help">This is a sample enterprise module to verify your Odoo Enterprise setup is working correctly.</field>
+    </record>
+    
+    <menuitem id="menu_sample_enterprise_root" 
+              name="Sample Enterprise" 
+              sequence="100"
+              web_icon="sample_enterprise,static/description/icon.png"
+              action="action_sample_enterprise"/>
+</odoo>
