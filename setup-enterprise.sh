@@ -222,6 +222,80 @@ download_enterprise_alternatives() {
     print_status "Enterprise alternative modules downloaded successfully!"
 }
 
+# Function to extract enterprise addons from tar.gz
+extract_enterprise_from_archive() {
+    local archive_file="odoo_17.0+e.latest.tar.gz"
+    local enterprise_dir="./enterprise"
+    
+    print_header "EXTRACTING ENTERPRISE ADDONS FROM ARCHIVE"
+    
+    if [ ! -f "$archive_file" ]; then
+        print_error "Archive file $archive_file not found!"
+        print_status "Please ensure you have the Odoo Enterprise archive in the current directory"
+        return 1
+    fi
+    
+    # Create enterprise directory
+    mkdir -p "$enterprise_dir"
+    
+    # Create temporary directory for extraction
+    local temp_dir=$(mktemp -d)
+    
+    print_status "Extracting $archive_file to temporary directory..."
+    tar -xzf "$archive_file" -C "$temp_dir"
+    
+    # Find the enterprise addons directory in the extracted files
+    local extracted_enterprise_dir=""
+    
+    # Look for common enterprise addon directory patterns
+    for pattern in "odoo/addons" "*/addons" "addons" "enterprise" "*/enterprise"; do
+        if [ -d "$temp_dir/$pattern" ]; then
+            extracted_enterprise_dir="$temp_dir/$pattern"
+            break
+        fi
+    done
+    
+    # If not found, look for directories with enterprise modules
+    if [ -z "$extracted_enterprise_dir" ]; then
+        for dir in "$temp_dir"/*; do
+            if [ -d "$dir" ] && [ -f "$dir/account_accountant/__manifest__.py" ]; then
+                extracted_enterprise_dir="$dir"
+                break
+            fi
+        done
+    fi
+    
+    if [ -z "$extracted_enterprise_dir" ]; then
+        print_error "Could not find enterprise addons directory in the archive"
+        rm -rf "$temp_dir"
+        return 1
+    fi
+    
+    print_status "Found enterprise addons in: $extracted_enterprise_dir"
+    
+    # Copy enterprise modules to the enterprise directory
+    local module_count=0
+    for module_dir in "$extracted_enterprise_dir"/*; do
+        if [ -d "$module_dir" ] && [ -f "$module_dir/__manifest__.py" ]; then
+            local module_name=$(basename "$module_dir")
+            print_status "Copying module: $module_name"
+            cp -r "$module_dir" "$enterprise_dir/"
+            ((module_count++))
+        fi
+    done
+    
+    # Cleanup temporary directory
+    rm -rf "$temp_dir"
+    
+    print_status "Successfully extracted $module_count enterprise modules to $enterprise_dir"
+    print_status "Enterprise modules are now ready for use!"
+    
+    # Set proper permissions
+    chmod -R 755 "$enterprise_dir"
+    
+    return 0
+}
+
 # Function to create a sample enterprise module
 create_sample_enterprise_module() {
     local enterprise_dir="$1"
@@ -288,6 +362,9 @@ main() {
         "enterprise-alt")
             download_enterprise_alternatives "./addons"
             ;;
+        "extract")
+            extract_enterprise_from_archive
+            ;;
         "sample")
             create_sample_enterprise_module "./enterprise"
             ;;
@@ -295,22 +372,35 @@ main() {
             clone_oca_modules "./addons"
             create_sample_enterprise_module "./enterprise"
             ;;
+        "full")
+            extract_enterprise_from_archive
+            clone_oca_modules "./addons"
+            ;;
         *)
             print_header "ODOO ENTERPRISE SETUP HELPER"
             echo ""
             echo "Usage: $0 [COMMAND]"
             echo ""
             echo "Commands:"
+            echo "  extract          - Extract enterprise addons from odoo_17.0+e.latest.tar.gz"
             echo "  oca              - Download OCA community modules"
             echo "  enterprise-alt   - Download organized enterprise alternatives"
             echo "  sample           - Create sample enterprise module for testing"
             echo "  all              - Download OCA modules and create sample"
+            echo "  full             - Extract enterprise + download OCA modules"
             echo ""
             echo "Examples:"
-            echo "  $0 oca"
-            echo "  $0 enterprise-alt"
-            echo "  $0 sample"
-            echo "  $0 all"
+            echo "  $0 extract           # Extract from odoo_17.0+e.latest.tar.gz"
+            echo "  $0 oca               # Download community modules"
+            echo "  $0 enterprise-alt    # Download enterprise alternatives" 
+            echo "  $0 sample            # Create test module"
+            echo "  $0 all               # OCA modules + sample"
+            echo "  $0 full              # Extract enterprise + OCA modules"
+            echo ""
+            echo "Prerequisites:"
+            echo "  - For 'extract': odoo_17.0+e.latest.tar.gz file in current directory"
+            echo "  - For 'oca': Git installed and internet connection"
+            echo "  - For 'enterprise-alt': Git installed and internet connection"
             ;;
     esac
 }
