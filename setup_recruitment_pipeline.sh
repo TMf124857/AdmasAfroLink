@@ -9,7 +9,7 @@ echo "=================================================="
 # Function to execute SQL commands in Docker container
 execute_sql() {
     local sql_command="$1"
-    docker exec -i postgres_db psql -U odoo -d admasafrolink_db -c "$sql_command"
+    docker exec -i odoo_postgres psql -U odoo -d admasafrolink_db -c "$sql_command"
 }
 
 echo "Phase 1: Clearing existing recruitment stages..."
