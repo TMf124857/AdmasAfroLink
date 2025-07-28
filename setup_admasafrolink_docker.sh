@@ -22,7 +22,7 @@ echo "Odoo Container: $ODOO_CONTAINER"
 execute_sql() {
     local sql_command="$1"
     echo "Executing: $sql_command"
-    docker exec -i "$DB_CONTAINER" psql -U "$DB_USER" -d "$DB_NAME" -c "$sql_command"
+        docker exec -i odoo_postgres psql -U odoo -d admasafrolink_uganda -c "$sql_command"
 }
 
 # Function to check if Docker containers are running
