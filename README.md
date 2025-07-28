@@ -1,48 +1,77 @@
-# Odoo Enterprise Docker Compose Setup
+# AdmasAfroLink - Odoo Enterprise Platform
 
-This repository contains a complete Docker Compose setup for deploying Odoo Enterprise with all necessary dependencies.
+Complete Docker-based Odoo Enterprise setup with automated deployment agent for seamless development-to-production workflow.
 
 ## 🚀 Quick Start
 
-1. **Clone and navigate to the directory:**
+### Local Development
+1. **Clone and setup:**
    ```bash
    cd AdmasAfroLink
+   cp .env.example .env
    ```
 
-2. **Start the services:**
+2. **Start services:**
    ```bash
    docker-compose up -d
    ```
 
-3. **Initialize the database (first time only):**
-   ```bash
-   # Linux/Mac
-   chmod +x init-odoo.sh
-   ./init-odoo.sh
-   
-   # Windows
-   init-odoo.bat
-   ```
-
-4. **Access Odoo:**
+3. **Access Odoo:**
    - Odoo: http://localhost:8069
    - Default credentials: admin / admin123
-   - pgAdmin: http://localhost:5050 (optional, use profile `tools`)
+
+### Automated Deployment
+1. **Configure deployment:**
+   ```bash
+   # Edit server details
+   nano deployment-agent.conf
+   ```
+
+2. **Deploy to server:**
+   ```bash
+   ./deploy deploy
+   ```
+
+3. **Auto-deployment mode:**
+   ```bash
+   ./deploy auto
+   ```
 
 ## 📁 Project Structure
 
 ```
 AdmasAfroLink/
-├── docker-compose.yml          # Main Docker Compose configuration
-├── .env                        # Environment variables
+├── docker-compose.yml          # Docker Compose configuration
+├── .env / .env.example         # Environment variables
+├── deploy                      # Deployment agent launcher
+├── deployment-agent.sh         # Main deployment automation script
+├── deployment-agent.conf       # Deployment configuration
+├── DEPLOYMENT-AGENT-GUIDE.md   # Deployment guide
 ├── config/
-│   └── odoo.conf              # Odoo configuration file
+│   └── odoo.conf              # Odoo configuration
 ├── nginx/
-│   └── nginx.conf             # Nginx reverse proxy configuration
-├── addons/                    # Custom Odoo addons directory
-├── enterprise/                # Odoo Enterprise addons directory
-└── logs/                      # Odoo logs directory
+│   └── nginx.conf             # Nginx configuration
+├── addons/                    # Custom Odoo addons
+├── enterprise/                # Enterprise addons
+├── extract-enterprise-addons.sh # Enterprise addon extractor
+├── ENTERPRISE-CONVERSION-GUIDE.md # Enterprise development guide
+└── enterprise-oop-examples.py  # OOP examples for Odoo
 ```
+
+## 🤖 Deployment Agent Features
+
+- **Automated Git operations** - Commit, push, and deploy changes
+- **Server health monitoring** - Continuous health checks
+- **Auto-deployment mode** - Watch for changes and deploy automatically  
+- **Rollback capability** - Easy rollback to previous versions
+- **Enterprise addon support** - Automated enterprise module extraction
+- **Multi-environment support** - Development, staging, production
+
+## 📖 Documentation
+
+- `DEPLOYMENT-AGENT-GUIDE.md` - Complete deployment automation guide
+- `ENTERPRISE-CONVERSION-GUIDE.md` - Odoo enterprise development guide
+- `enterprise-oop-examples.py` - OOP patterns for Odoo development
 
 ## 🏗️ Services Overview
 
