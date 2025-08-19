@@ -44,18 +44,30 @@ Customizations Required:
     - Expected Graduation Date
     - Academic Supervisor Contact
     - University Coordinator
+    - Belgian University Partner
+    - Visa Status
+    - Immigration Documents
+    - Emergency Contact (Belgium)
+    - ECTS Credits Required
+    - Cultural Orientation Status
     
   Pipeline Stages:
     - New Application
     - Document Verification
-    - University Pre-approval
+    - Belgian University Pre-approval
+    - Visa Processing
+    - Immigration Clearance
     - Company Review
     - Interview Scheduled
     - Interview Completed
     - Final Selection
     - Placement Confirmed
     - Contract Signed
+    - Pre-Departure Orientation
+    - Arrival & Immigration
     - Onboarding Started
+    - Cultural Integration
+    - Performance Monitoring
 ```
 
 #### 1.2 HR Module Extension
