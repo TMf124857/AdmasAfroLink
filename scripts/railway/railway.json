@@ -1,0 +1,47 @@
+{
+  "services": {
+    "api": {
+      "name": "admasafrolink-api",
+      "source": {
+        "repo": "TMf124857/AdmasAfroLink"
+      },
+      "variables": {
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "ASPNETCORE_URLS": "http://0.0.0.0:$PORT",
+        "JwtSettings__Issuer": "https://admasafrolink-api.up.railway.app",
+        "JwtSettings__Audience": "https://admasafrolink-api.up.railway.app",
+        "JwtSettings__ExpiryInMinutes": "60"
+      },
+      "regions": ["us-west1"],
+      "deploy": {
+        "healthcheckPath": "/health",
+        "healthcheckTimeout": 100,
+        "restartPolicyType": "ON_FAILURE"
+      }
+    },
+    "postgres": {
+      "name": "admasafrolink-postgres",
+      "source": {
+        "image": "postgres:14"
+      },
+      "variables": {
+        "POSTGRES_DB": "admasafrolink",
+        "POSTGRES_USER": "admasadmin",
+        "POSTGRES_PASSWORD": "AdmasAfro2024!"
+      },
+      "volumes": [
+        {
+          "mountPath": "/var/lib/postgresql/data",
+          "size": "5Gi"
+        }
+      ]
+    }
+  },
+  "environments": {
+    "production": {
+      "variables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    }
+  }
+}

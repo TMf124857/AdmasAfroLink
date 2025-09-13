@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: admasafrolink-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: AdmasAfroLinkDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres123}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - admasafrolink-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis Cache (Optional)
+  redis:
+    image: redis:7-alpine
+    container_name: admasafrolink-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - admasafrolink-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # AdmasAfroLink API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: admasafrolink-api
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=AdmasAfroLinkDB;Username=postgres;Password=${POSTGRES_PASSWORD:-postgres123}
+      - JwtSettings__SecretKey=${JWT_SECRET_KEY:-YourSuperSecretKeyThatIsAtLeast32CharactersLongForAdmasAfroLink2025!}
+      - JwtSettings__Issuer=AdmasAfroLink
+      - JwtSettings__Audience=AdmasAfroLinkUsers
+      - JwtSettings__ExpirationInMinutes=60
+      - Authentication__Google__ClientId=${GOOGLE_CLIENT_ID:-}
+      - Authentication__Google__ClientSecret=${GOOGLE_CLIENT_SECRET:-}
+      - Authentication__Facebook__AppId=${FACEBOOK_APP_ID:-}
+      - Authentication__Facebook__AppSecret=${FACEBOOK_APP_SECRET:-}
+      - AppSettings__FrontendUrl=${FRONTEND_URL:-http://localhost:3000}
+      - AppSettings__ApiUrl=${API_URL:-http://localhost:8080}
+      - EmailSettings__SmtpServer=${SMTP_SERVER:-smtp.gmail.com}
+      - EmailSettings__SmtpPort=${SMTP_PORT:-587}
+      - EmailSettings__Username=${SMTP_USERNAME:-}
+      - EmailSettings__Password=${SMTP_PASSWORD:-}
+      - EmailSettings__FromEmail=${FROM_EMAIL:-noreply@admasafrolink.com}
+      - EmailSettings__FromName=${FROM_NAME:-AdmasAfroLink}
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - admasafrolink-network
+    volumes:
+      - api_uploads:/app/wwwroot/uploads
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Nginx Reverse Proxy (Optional)
+  nginx:
+    image: nginx:alpine
+    container_name: admasafrolink-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - api_uploads:/var/www/uploads:ro
+    depends_on:
+      - api
+    networks:
+      - admasafrolink-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  api_uploads:
+    driver: local
+
+networks:
+  admasafrolink-network:
+    driver: bridge

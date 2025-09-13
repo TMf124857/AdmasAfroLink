@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdmasAfroLink - Student Portal Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .flag {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            margin-right: 4px;
+        }
+
+        .flag-be {
+            background: linear-gradient(to right, #000 33%, #fcdc00 33%, #fcdc00 66%, #ff0000 66%);
+        }
+
+        .flag-ug {
+            background: linear-gradient(to bottom, 
+                #000 16.66%, 
+                #fcdc00 16.66%, 
+                #fcdc00 33.33%, 
+                #ff0000 33.33%, 
+                #ff0000 50%, 
+                #000 50%, 
+                #000 66.66%, 
+                #fcdc00 66.66%, 
+                #fcdc00 83.33%, 
+                #ff0000 83.33%);
+        }
+
+        .nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .welcome-section h1 {
+            color: #003366;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-section p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .dashboard-preview {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+
+        .progress-item {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 6px;
+            border-left: 4px solid #fcdc00;
+            background: #f8f9fa;
+        }
+
+        .progress-item.completed {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .progress-item.active {
+            border-left-color: #007bff;
+            background: #d1ecf1;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h4 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            opacity: 0.9;
+        }
+
+        .workflow-stage {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .workflow-stage h4 {
+            color: #003366;
+            margin-bottom: 0.5rem;
+        }
+
+        .stage-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-active {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .features-section {
+            margin-top: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 3rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #fcdc00;
+            color: #003366;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #e6c700;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-preview {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav {
+                justify-content: center;
+            }
+            
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="flag flag-be"></div>
+                <div class="flag flag-ug"></div>
+                AdmasAfroLink
+            </div>
+            <nav class="nav">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#applications">Applications</a>
+                <a href="#documents">Documents</a>
+                <a href="#help">Help</a>
+                <a href="#profile">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="welcome-section">
+            <h1>Welcome to AdmasAfroLink Student Portal</h1>
+            <p>Your gateway to internship opportunities in Uganda. Track your application progress, manage documents, and connect with your cultural bridge to East Africa.</p>
+        </section>
+
+        <div class="dashboard-preview">
+            <aside class="sidebar">
+                <h3>Progress Overview</h3>
+                <div class="progress-item completed">
+                    <strong>1. Initial Registration</strong>
+                    <p>✓ Profile created</p>
+                </div>
+                <div class="progress-item completed">
+                    <strong>2. Document Submission</strong>
+                    <p>✓ CV and transcripts uploaded</p>
+                </div>
+                <div class="progress-item active">
+                    <strong>3. University Verification</strong>
+                    <p>⏳ In progress</p>
+                </div>
+                <div class="progress-item">
+                    <strong>4. Partner Selection</strong>
+                    <p>⏸ Pending</p>
+                </div>
+                <div class="progress-item">
+                    <strong>5. Cultural Preparation</strong>
+                    <p>⏸ Pending</p>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <h2>Dashboard Overview</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>3</h4>
+                        <p>Stages Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>13</h4>
+                        <p>Stages Remaining</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>18%</h4>
+                        <p>Progress Complete</p>
+                    </div>
+                </div>
+
+                <h3>Current Stage: University Verification</h3>
+                <div class="workflow-stage">
+                    <h4>Academic Document Review</h4>
+                    <p>Your university is currently verifying your academic records and eligibility for the internship program.</p>
+                    <span class="stage-status status-active">In Progress</span>
+                </div>
+
+                <h3>Next Steps</h3>
+                <div class="workflow-stage">
+                    <h4>Partner Organization Selection</h4>
+                    <p>Once verification is complete, you'll be able to browse and select from partnered organizations in Uganda.</p>
+                    <span class="stage-status status-pending">Pending</span>
+                </div>
+
+                <div class="workflow-stage">
+                    <h4>Cultural Preparation Workshop</h4>
+                    <p>Mandatory cultural orientation session covering Ugandan customs, language basics, and professional etiquette.</p>
+                    <span class="stage-status status-pending">Pending</span>
+                </div>
+            </main>
+        </div>
+
+        <section class="features-section">
+            <h2 style="text-align: center; color: #003366; margin-bottom: 1rem;">Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your application through all 16 stages of the internship process with real-time updates and notifications.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📁</div>
+                    <h3>Document Management</h3>
+                    <p>Securely upload, manage, and track all required documents including visa papers, medical certificates, and academic records.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Cultural Integration</h3>
+                    <p>Access resources for cultural preparation, language learning, and understanding Ugandan professional environments.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Real-time Communication</h3>
+                    <p>Stay connected with coordinators, partner organizations, and fellow students through integrated messaging.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h3>Health & Safety</h3>
+                    <p>Complete medical requirements, track vaccinations, and access health resources for studying abroad.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✈️</div>
+                    <h3>Travel Coordination</h3>
+                    <p>Manage travel arrangements, visa applications, and pre-departure preparations in one integrated platform.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Join hundreds of Belgian students who have successfully completed internships in Uganda through our comprehensive support system.</p>
+            <a href="#" class="btn">Begin Application Process</a>
+        </section>
+    </div>
+
+    <script>
+        // Simple JavaScript for interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add some interactive feedback
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Simulate real-time updates
+            let progressPercentage = 18;
+            setInterval(() => {
+                if (Math.random() > 0.7) { // 30% chance to update
+                    progressPercentage += Math.random() * 2;
+                    const progressElement = document.querySelector('.stat-card h4');
+                    if (progressElement && progressPercentage <= 100) {
+                        progressElement.textContent = Math.round(progressPercentage) + '%';
+                    }
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

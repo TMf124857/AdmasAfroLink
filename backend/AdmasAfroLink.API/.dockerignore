@@ -1,0 +1,38 @@
+# Docker ignore file for AdmasAfroLink API
+# Ignore build artifacts
+bin/
+obj/
+out/
+
+# Ignore Visual Studio files
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.log
+
+# Ignore node modules (if any)
+node_modules/
+
+# Ignore migration files in some cases (uncomment if needed)
+# Migrations/
+
+# Ignore secrets and local settings
+appsettings.Development.json
+appsettings.Local.json
+*.pfx
+*.key
+
+# Ignore Git files
+.git/
+.gitignore
+README.md

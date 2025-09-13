@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: admasafrolink-api
+    env: docker
+    repo: https://github.com/TMf124857/AdmasAfroLink
+    region: oregon
+    plan: starter
+    buildCommand: docker build -t admasafrolink-api .
+    startCommand: dotnet AdmasAfroLink.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:10000
+      - key: JwtSettings__Issuer
+        value: https://admasafrolink-api.onrender.com
+      - key: JwtSettings__Audience
+        value: https://admasafrolink-api.onrender.com
+      - key: JwtSettings__ExpiryInMinutes
+        value: "60"
+      - key: ConnectionStrings__DefaultConnection
+        fromDatabase:
+          name: admasafrolink-postgres
+          property: connectionString
+      - key: JwtSettings__Key
+        generateValue: true
+    healthCheckPath: /health
+    
+databases:
+  - name: admasafrolink-postgres
+    databaseName: admasafrolink
+    user: admasadmin
+    region: oregon
+    plan: starter

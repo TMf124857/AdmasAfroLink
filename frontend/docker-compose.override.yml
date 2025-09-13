@@ -1,0 +1,39 @@
+# Docker Compose override for development
+
+services:
+  frontend-dev:
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+      - NEXT_PUBLIC_SOCKET_URL=http://localhost:8000
+      - NEXT_PUBLIC_DEBUG_MODE=true
+      - NEXT_PUBLIC_LOG_LEVEL=debug
+      - NEXT_PUBLIC_ENABLE_ANALYTICS=false
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+      - next_cache:/app/.next
+      - ./dev-logs:/app/logs
+    ports:
+      - "3000:3000"
+      - "9229:9229"  # Node.js debugger port
+
+  # Development database with exposed ports for debugging
+  mongo:
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=devuser
+      - MONGO_INITDB_ROOT_PASSWORD=devpass123
+    volumes:
+      - ./dev-data/mongo:/data/db
+
+  redis:
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass devpass123
+    volumes:
+      - ./dev-data/redis:/data
+
+volumes:
+  node_modules:
+  next_cache:

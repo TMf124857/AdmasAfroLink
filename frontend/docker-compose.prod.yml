@@ -1,0 +1,64 @@
+# Docker Compose for production deployment
+
+services:
+  frontend-prod:
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=https://api.admasafrolink.com/api
+      - NEXT_PUBLIC_SOCKET_URL=https://api.admasafrolink.com
+      - NEXT_PUBLIC_DEBUG_MODE=false
+      - NEXT_PUBLIC_ENABLE_ANALYTICS=true
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  backend:
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=produser
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '1.0'
+          memory: 1G
+
+  redis:
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+  nginx:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
