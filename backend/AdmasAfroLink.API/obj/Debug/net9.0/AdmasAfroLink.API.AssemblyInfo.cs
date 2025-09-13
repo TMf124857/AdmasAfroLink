@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdmasAfroLink.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0b1148032d85073558c339ed76c2b436aa42c76")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b46b103cbd1b1acf89e793ede2f6b49f8553fe95")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdmasAfroLink.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdmasAfroLink.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

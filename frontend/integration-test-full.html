@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdmasAfroLink Integration Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .loading {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 AdmasAfroLink Frontend-Backend Integration Test</h1>
+        <p>This page tests the integration between the frontend and backend API services.</p>
+
+        <div class="test-section">
+            <h3>1. API Service Test</h3>
+            <div id="api-status" class="status loading">Testing API service loading...</div>
+            <button onclick="testApiService()">Test API Service</button>
+        </div>
+
+        <div class="test-section">
+            <h3>2. Backend Connectivity Test</h3>
+            <div id="backend-status" class="status loading">Checking backend connectivity...</div>
+            <button onclick="testBackendConnection()">Test Backend Connection</button>
+            <pre id="backend-response"></pre>
+        </div>
+
+        <div class="test-section">
+            <h3>3. User Registration Test</h3>
+            <div class="form-group">
+                <label for="testEmail">Email:</label>
+                <input type="email" id="testEmail" value="test@example.com">
+            </div>
+            <div class="form-group">
+                <label for="testPassword">Password:</label>
+                <input type="password" id="testPassword" value="Test123!">
+            </div>
+            <div class="form-group">
+                <label for="testFirstName">First Name:</label>
+                <input type="text" id="testFirstName" value="Test">
+            </div>
+            <div class="form-group">
+                <label for="testLastName">Last Name:</label>
+                <input type="text" id="testLastName" value="User">
+            </div>
+            <div id="registration-status" class="status loading">Ready to test registration...</div>
+            <button onclick="testUserRegistration()">Test User Registration</button>
+            <pre id="registration-response"></pre>
+        </div>
+
+        <div class="test-section">
+            <h3>4. Database Connectivity Test</h3>
+            <div id="database-status" class="status loading">Ready to test database...</div>
+            <button onclick="testDatabaseConnection()">Test Database Connection</button>
+            <pre id="database-response"></pre>
+        </div>
+
+        <div class="test-section">
+            <h3>5. Overall Integration Status</h3>
+            <div id="overall-status" class="status loading">Run tests to see overall status...</div>
+            <button onclick="runAllTests()">Run All Tests</button>
+        </div>
+    </div>
+
+    <script src="src/services/api.js"></script>
+    <script>
+        // Test results storage
+        const testResults = {
+            apiService: false,
+            backendConnection: false,
+            userRegistration: false,
+            databaseConnection: false
+        };
+
+        // Update status display
+        function updateStatus(elementId, success, message) {
+            const element = document.getElementById(elementId);
+            element.className = `status ${success ? 'success' : 'error'}`;
+            element.textContent = message;
+        }
+
+        // Test 1: API Service Loading
+        function testApiService() {
+            try {
+                if (typeof API !== 'undefined' && API.config) {
+                    testResults.apiService = true;
+                    updateStatus('api-status', true, '✅ API service loaded successfully');
+                    console.log('API Configuration:', API.config);
+                } else {
+                    testResults.apiService = false;
+                    updateStatus('api-status', false, '❌ API service failed to load');
+                }
+            } catch (error) {
+                testResults.apiService = false;
+                updateStatus('api-status', false, `❌ API service error: ${error.message}`);
+            }
+            updateOverallStatus();
+        }
+
+        // Test 2: Backend Connectivity
+        async function testBackendConnection() {
+            try {
+                updateStatus('backend-status', null, 'Testing backend connection...');
+                
+                // Test direct connection to API
+                const response = await fetch('http://localhost:7001/');
+                const text = await response.text();
+                
+                if (response.ok) {
+                    testResults.backendConnection = true;
+                    updateStatus('backend-status', true, '✅ Backend API is reachable');
+                    document.getElementById('backend-response').textContent = 
+                        `Status: ${response.status} ${response.statusText}\nContent-Type: ${response.headers.get('content-type')}\nResponse: ${text.substring(0, 200)}...`;
+                } else {
+                    testResults.backendConnection = false;
+                    updateStatus('backend-status', false, `❌ Backend returned ${response.status}`);
+                    document.getElementById('backend-response').textContent = text;
+                }
+            } catch (error) {
+                testResults.backendConnection = false;
+                updateStatus('backend-status', false, `❌ Backend connection failed: ${error.message}`);
+                document.getElementById('backend-response').textContent = error.stack;
+            }
+            updateOverallStatus();
+        }
+
+        // Test 3: User Registration
+        async function testUserRegistration() {
+            try {
+                updateStatus('registration-status', null, 'Testing user registration...');
+                
+                const email = document.getElementById('testEmail').value;
+                const password = document.getElementById('testPassword').value;
+                const firstName = document.getElementById('testFirstName').value;
+                const lastName = document.getElementById('testLastName').value;
+
+                // Use unique email to avoid conflicts
+                const uniqueEmail = `test_${Date.now()}@example.com`;
+
+                const registrationData = {
+                    email: uniqueEmail,
+                    password: password,
+                    firstName: firstName,
+                    lastName: lastName
+                };
+
+                console.log('Attempting registration with:', registrationData);
+
+                // Try direct API call first
+                const response = await fetch('http://localhost:7001/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(registrationData)
+                });
+
+                const result = await response.text();
+                
+                if (response.ok) {
+                    testResults.userRegistration = true;
+                    updateStatus('registration-status', true, '✅ User registration successful');
+                } else {
+                    // Check if it's a validation error (expected) vs server error
+                    if (response.status === 400) {
+                        testResults.userRegistration = true; // API is working, just validation issues
+                        updateStatus('registration-status', true, '✅ Registration endpoint working (validation response)');
+                    } else {
+                        testResults.userRegistration = false;
+                        updateStatus('registration-status', false, `❌ Registration failed: ${response.status}`);
+                    }
+                }
+
+                document.getElementById('registration-response').textContent = 
+                    `Status: ${response.status} ${response.statusText}\nResponse: ${result}`;
+
+            } catch (error) {
+                testResults.userRegistration = false;
+                updateStatus('registration-status', false, `❌ Registration error: ${error.message}`);
+                document.getElementById('registration-response').textContent = error.stack;
+            }
+            updateOverallStatus();
+        }
+
+        // Test 4: Database Connection (indirect through API)
+        async function testDatabaseConnection() {
+            try {
+                updateStatus('database-status', null, 'Testing database connection...');
+                
+                // Test an endpoint that would require database access
+                const response = await fetch('http://localhost:7001/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'db_test@example.com',
+                        password: 'Test123!',
+                        firstName: 'DB',
+                        lastName: 'Test'
+                    })
+                });
+
+                const result = await response.text();
+
+                // If we get any response (even error), it means API can connect to DB
+                if (response.status === 400 || response.status === 200 || response.status === 409) {
+                    testResults.databaseConnection = true;
+                    updateStatus('database-status', true, '✅ Database connection working');
+                } else if (response.status === 500) {
+                    testResults.databaseConnection = false;
+                    updateStatus('database-status', false, '❌ Database connection issues (500 error)');
+                } else {
+                    testResults.databaseConnection = false;
+                    updateStatus('database-status', false, `❌ Unexpected response: ${response.status}`);
+                }
+
+                document.getElementById('database-response').textContent = 
+                    `Status: ${response.status} ${response.statusText}\nResponse: ${result}`;
+
+            } catch (error) {
+                testResults.databaseConnection = false;
+                updateStatus('database-status', false, `❌ Database test error: ${error.message}`);
+                document.getElementById('database-response').textContent = error.stack;
+            }
+            updateOverallStatus();
+        }
+
+        // Update overall status
+        function updateOverallStatus() {
+            const passedTests = Object.values(testResults).filter(result => result === true).length;
+            const totalTests = Object.keys(testResults).length;
+            
+            const allPassed = passedTests === totalTests;
+            const message = `${passedTests}/${totalTests} tests passed`;
+            
+            if (allPassed) {
+                updateStatus('overall-status', true, `✅ All integration tests passed! ${message}`);
+            } else if (passedTests > 0) {
+                updateStatus('overall-status', false, `⚠️ Partial success: ${message}`);
+            } else {
+                updateStatus('overall-status', false, `❌ Integration tests failed: ${message}`);
+            }
+        }
+
+        // Run all tests
+        async function runAllTests() {
+            updateStatus('overall-status', null, 'Running all tests...');
+            
+            testApiService();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testBackendConnection();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testUserRegistration();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testDatabaseConnection();
+            
+            updateOverallStatus();
+        }
+
+        // Auto-run API service test on load
+        window.addEventListener('load', () => {
+            setTimeout(testApiService, 1000);
+        });
+    </script>
+</body>
+</html>

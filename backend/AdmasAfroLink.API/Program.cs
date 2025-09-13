@@ -83,17 +83,30 @@ builder.Services.AddAuthentication(options =>
             return Task.CompletedTask;
         }
     };
-})
-.AddGoogle(options =>
-{
-    options.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
-    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
-})
-.AddFacebook(options =>
-{
-    options.AppId = builder.Configuration["Authentication:Facebook:AppId"]!;
-    options.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"]!;
 });
+
+// Configure OAuth providers only if credentials are provided
+var googleClientId = builder.Configuration["Authentication:Google:ClientId"];
+var googleClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+if (!string.IsNullOrEmpty(googleClientId) && !string.IsNullOrEmpty(googleClientSecret))
+{
+    builder.Services.AddAuthentication().AddGoogle(options =>
+    {
+        options.ClientId = googleClientId;
+        options.ClientSecret = googleClientSecret;
+    });
+}
+
+var facebookAppId = builder.Configuration["Authentication:Facebook:AppId"];
+var facebookAppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+if (!string.IsNullOrEmpty(facebookAppId) && !string.IsNullOrEmpty(facebookAppSecret))
+{
+    builder.Services.AddAuthentication().AddFacebook(options =>
+    {
+        options.AppId = facebookAppId;
+        options.AppSecret = facebookAppSecret;
+    });
+}
 
 // AutoMapper Configuration
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -165,15 +178,13 @@ builder.Logging.AddDebug();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
+// Enable Swagger in production for testing
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "AdmasAfroLink API V1");
-        c.RoutePrefix = string.Empty; // Launch Swagger on app root
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "AdmasAfroLink API V1");
+    c.RoutePrefix = string.Empty; // Launch Swagger on app root
+});
 
 app.UseHttpsRedirection();
 

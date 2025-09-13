@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AdmasAfroLink.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250913121354_InitialCreate_PostgreSQL")]
-    partial class InitialCreate_PostgreSQL
+    [Migration("20250913140750_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,7 +41,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -72,7 +72,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 1,
                             Category = "Industry",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(429),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(2201),
                             Description = "Tech innovations and trends",
                             IsActive = true,
                             Name = "Technology"
@@ -81,7 +81,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 2,
                             Category = "Business",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3164),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3623),
                             Description = "Starting and running businesses",
                             IsActive = true,
                             Name = "Entrepreneurship"
@@ -90,7 +90,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 3,
                             Category = "Creative",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3171),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3627),
                             Description = "African arts and cultural heritage",
                             IsActive = true,
                             Name = "Arts & Culture"
@@ -99,7 +99,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 4,
                             Category = "Social Impact",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3173),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3628),
                             Description = "Educational development in Africa",
                             IsActive = true,
                             Name = "Education"
@@ -108,7 +108,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 5,
                             Category = "Social Impact",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3175),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3630),
                             Description = "Health and wellness initiatives",
                             IsActive = true,
                             Name = "Healthcare"
@@ -117,7 +117,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 6,
                             Category = "Business",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3178),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3631),
                             Description = "Financial services and fintech",
                             IsActive = true,
                             Name = "Finance"
@@ -126,7 +126,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 7,
                             Category = "Industry",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3180),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3632),
                             Description = "Agricultural innovation and sustainability",
                             IsActive = true,
                             Name = "Agriculture"
@@ -135,7 +135,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 8,
                             Category = "Creative",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3183),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3634),
                             Description = "African fashion and textile industry",
                             IsActive = true,
                             Name = "Fashion"
@@ -144,7 +144,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 9,
                             Category = "Creative",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3185),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3635),
                             Description = "African music and entertainment",
                             IsActive = true,
                             Name = "Music"
@@ -153,7 +153,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 10,
                             Category = "Recreation",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3188),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3636),
                             Description = "Sports and fitness",
                             IsActive = true,
                             Name = "Sports"
@@ -175,7 +175,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -233,7 +233,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<bool>("IsRead")
                         .HasColumnType("boolean");
@@ -303,7 +303,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Currency")
                         .IsRequired()
@@ -355,7 +355,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -398,7 +398,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int>("OpportunityId")
                         .HasColumnType("integer");
@@ -427,7 +427,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -457,7 +457,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<bool>("IsRequired")
                         .HasColumnType("boolean");
@@ -483,7 +483,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.HasKey("OpportunityId", "TagId");
 
@@ -508,7 +508,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -539,7 +539,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 1,
                             Category = "Technology",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 997, DateTimeKind.Utc).AddTicks(6862),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(2035),
                             Description = "Full-stack web development",
                             IsActive = true,
                             Name = "Web Development"
@@ -548,7 +548,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 2,
                             Category = "Technology",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(1990),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3567),
                             Description = "iOS and Android app development",
                             IsActive = true,
                             Name = "Mobile Development"
@@ -557,7 +557,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 3,
                             Category = "Design",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2003),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3571),
                             Description = "Visual design and branding",
                             IsActive = true,
                             Name = "Graphic Design"
@@ -566,7 +566,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 4,
                             Category = "Marketing",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2006),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3572),
                             Description = "Online marketing and social media",
                             IsActive = true,
                             Name = "Digital Marketing"
@@ -575,7 +575,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 5,
                             Category = "Management",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2098),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3603),
                             Description = "Leading and managing projects",
                             IsActive = true,
                             Name = "Project Management"
@@ -584,7 +584,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 6,
                             Category = "Technology",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2101),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3669),
                             Description = "Data processing and analytics",
                             IsActive = true,
                             Name = "Data Analysis"
@@ -593,7 +593,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 7,
                             Category = "Writing",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2103),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3671),
                             Description = "Creating engaging content",
                             IsActive = true,
                             Name = "Content Writing"
@@ -602,7 +602,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 8,
                             Category = "Creative",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2106),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3673),
                             Description = "Professional photography",
                             IsActive = true,
                             Name = "Photography"
@@ -611,7 +611,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 9,
                             Category = "Creative",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2108),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3675),
                             Description = "Video creation and editing",
                             IsActive = true,
                             Name = "Video Production"
@@ -620,7 +620,7 @@ namespace AdmasAfroLink.API.Migrations
                         {
                             Id = 10,
                             Category = "Business",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2110),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3676),
                             Description = "Growing business opportunities",
                             IsActive = true,
                             Name = "Business Development"
@@ -650,7 +650,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
@@ -680,7 +680,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 1,
                             Category = "Industry",
                             ColorCode = "#007bff",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(5932),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(5031),
                             IsActive = true,
                             Name = "Tech",
                             UsageCount = 0
@@ -690,7 +690,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 2,
                             Category = "Industry",
                             ColorCode = "#e83e8c",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8736),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6492),
                             IsActive = true,
                             Name = "Fashion",
                             UsageCount = 0
@@ -700,7 +700,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 3,
                             Category = "Industry",
                             ColorCode = "#fd7e14",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8743),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6496),
                             IsActive = true,
                             Name = "Music",
                             UsageCount = 0
@@ -710,7 +710,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 4,
                             Category = "Industry",
                             ColorCode = "#28a745",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8746),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6498),
                             IsActive = true,
                             Name = "Real Estate",
                             UsageCount = 0
@@ -720,7 +720,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 5,
                             Category = "Work Type",
                             ColorCode = "#6f42c1",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8749),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6499),
                             IsActive = true,
                             Name = "Remote",
                             UsageCount = 0
@@ -730,7 +730,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 6,
                             Category = "Work Type",
                             ColorCode = "#20c997",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8751),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6500),
                             IsActive = true,
                             Name = "Freelance",
                             UsageCount = 0
@@ -740,7 +740,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 7,
                             Category = "Work Type",
                             ColorCode = "#ffc107",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8754),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6501),
                             IsActive = true,
                             Name = "Full-time",
                             UsageCount = 0
@@ -750,7 +750,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 8,
                             Category = "Work Type",
                             ColorCode = "#6c757d",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8756),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6503),
                             IsActive = true,
                             Name = "Part-time",
                             UsageCount = 0
@@ -760,7 +760,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 9,
                             Category = "Priority",
                             ColorCode = "#dc3545",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8759),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6504),
                             IsActive = true,
                             Name = "Urgent",
                             UsageCount = 0
@@ -770,7 +770,7 @@ namespace AdmasAfroLink.API.Migrations
                             Id = 10,
                             Category = "Priority",
                             ColorCode = "#17a2b8",
-                            CreatedAt = new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8762),
+                            CreatedAt = new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6505),
                             IsActive = true,
                             Name = "Featured",
                             UsageCount = 0
@@ -812,7 +812,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -918,7 +918,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -961,7 +961,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Message")
                         .IsRequired()
@@ -982,7 +982,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.HasKey("Id");
 
@@ -1008,7 +1008,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.HasKey("UserId", "InterestId");
 
@@ -1028,7 +1028,7 @@ namespace AdmasAfroLink.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int>("EndorsementCount")
                         .HasColumnType("integer");

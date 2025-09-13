@@ -1,0 +1,339 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # Database Services
+  # ==========================================
+  
+  # PostgreSQL Database for Backend API
+  postgres:
+    image: postgres:15-alpine
+    container_name: admasafrolink-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-AdmasAfroLinkDB}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres123}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - admasafrolink
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-AdmasAfroLinkDB}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis Cache for Session Storage
+  redis:
+    image: redis:7-alpine
+    container_name: admasafrolink-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - admasafrolink
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==========================================
+  # Backend API Service
+  # ==========================================
+  
+  api:
+    build:
+      context: ./backend/AdmasAfroLink.API
+      dockerfile: Dockerfile
+    container_name: admasafrolink-api
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Production}
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: "Host=postgres;Database=${POSTGRES_DB:-AdmasAfroLinkDB};Username=${POSTGRES_USER:-postgres};Password=${POSTGRES_PASSWORD:-postgres123}"
+      JwtSettings__SecretKey: ${JWT_SECRET_KEY:-YourSuperSecretKeyThatIsAtLeast32CharactersLongForAdmasAfroLink2025!}
+      JwtSettings__Issuer: "AdmasAfroLink"
+      JwtSettings__Audience: "AdmasAfroLinkUsers"
+      JwtSettings__ExpirationInMinutes: 60
+      AppSettings__FrontendUrl: "http://localhost:3000"
+      AppSettings__ApiUrl: "http://localhost:7001"
+      EmailSettings__SmtpServer: ${SMTP_SERVER:-smtp.gmail.com}
+      EmailSettings__SmtpPort: ${SMTP_PORT:-587}
+      EmailSettings__FromEmail: ${FROM_EMAIL:-noreply@admasafrolink.com}
+      EmailSettings__Username: ${EMAIL_USERNAME}
+      EmailSettings__Password: ${EMAIL_PASSWORD}
+    ports:
+      - "7001:8080"
+    volumes:
+      - api_uploads:/app/wwwroot/uploads
+      - api_logs:/app/logs
+    networks:
+      - admasafrolink
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    labels:
+      - "com.admasafrolink.service=api"
+      - "com.admasafrolink.environment=${ASPNETCORE_ENVIRONMENT:-production}"
+
+  # ==========================================
+  # Frontend Services
+  # ==========================================
+  
+  # Development Frontend (Next.js with hot reload)
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+      args:
+        NODE_ENV: development
+    container_name: admasafrolink-frontend-dev
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      CHOKIDAR_USEPOLLING: true
+      WATCHPACK_POLLING: true
+      NEXT_PUBLIC_API_URL: http://localhost:7001
+      NEXT_PUBLIC_SOCKET_URL: http://localhost:7001
+      NEXT_PUBLIC_APP_NAME: AdmasAfroLink
+      NEXT_PUBLIC_APP_VERSION: 1.0.0
+      NEXT_PUBLIC_DEBUG_MODE: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+      - frontend_next_cache:/app/.next
+    networks:
+      - admasafrolink
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "com.admasafrolink.service=frontend"
+      - "com.admasafrolink.environment=development"
+    profiles:
+      - dev
+
+  # Production Frontend (Optimized build)
+  frontend-prod:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: production
+        NEXT_PUBLIC_API_URL: http://admasafrolink-api:8080
+        NEXT_PUBLIC_APP_NAME: AdmasAfroLink
+        NEXT_PUBLIC_APP_VERSION: 1.0.0
+    container_name: admasafrolink-frontend-prod
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_URL: http://localhost:7001
+      NEXT_PUBLIC_APP_NAME: AdmasAfroLink
+      NEXT_PUBLIC_APP_VERSION: 1.0.0
+    ports:
+      - "3001:3000"
+    networks:
+      - admasafrolink
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    labels:
+      - "com.admasafrolink.service=frontend"
+      - "com.admasafrolink.environment=production"
+    profiles:
+      - prod
+
+  # ==========================================
+  # Reverse Proxy & Load Balancer
+  # ==========================================
+  
+  nginx:
+    image: nginx:alpine
+    container_name: admasafrolink-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - nginx_logs:/var/log/nginx
+    networks:
+      - admasafrolink
+    depends_on:
+      - api
+      - frontend-dev
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "com.admasafrolink.service=nginx"
+      - "com.admasafrolink.environment=production"
+    profiles:
+      - proxy
+
+  # ==========================================
+  # Development & Admin Tools
+  # ==========================================
+  
+  # pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: admasafrolink-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@admasafrolink.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin123}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - admasafrolink
+    depends_on:
+      - postgres
+    labels:
+      - "com.admasafrolink.service=pgadmin"
+      - "com.admasafrolink.environment=development"
+    profiles:
+      - tools
+
+  # Redis Commander for Redis management
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: admasafrolink-redis-commander
+    restart: unless-stopped
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    ports:
+      - "8081:8081"
+    networks:
+      - admasafrolink
+    depends_on:
+      - redis
+    labels:
+      - "com.admasafrolink.service=redis-commander"
+      - "com.admasafrolink.environment=development"
+    profiles:
+      - tools
+
+  # ==========================================
+  # Monitoring & Logging
+  # ==========================================
+  
+  # Portainer for container management
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: admasafrolink-portainer
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - admasafrolink
+    labels:
+      - "com.admasafrolink.service=portainer"
+      - "com.admasafrolink.environment=development"
+    profiles:
+      - monitoring
+
+# ==========================================
+# Volumes
+# ==========================================
+volumes:
+  postgres_data:
+    driver: local
+    labels:
+      - "com.admasafrolink.volume=postgres"
+  
+  redis_data:
+    driver: local
+    labels:
+      - "com.admasafrolink.volume=redis"
+  
+  api_uploads:
+    driver: local
+    labels:
+      - "com.admasafrolink.volume=api-uploads"
+  
+  api_logs:
+    driver: local
+    labels:
+      - "com.admasafrolink.volume=api-logs"
+  
+  frontend_node_modules:
+    driver: local
+    labels:
+      - "com.admasafrolink.volume=frontend-node-modules"
+  
+  frontend_next_cache:
+    driver: local
+    labels:
+      - "com.admasafrolink.volume=frontend-next-cache"
+  
+  pgadmin_data:
+    driver: local
+    labels:
+      - "com.admasafrolink.volume=pgadmin"
+  
+  portainer_data:
+    driver: local
+    labels:
+      - "com.admasafrolink.volume=portainer"
+  
+  nginx_logs:
+    driver: local
+    labels:
+      - "com.admasafrolink.volume=nginx-logs"
+
+# ==========================================
+# Networks
+# ==========================================
+networks:
+  admasafrolink:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.0.0/16
+    labels:
+      - "com.admasafrolink.network=main"

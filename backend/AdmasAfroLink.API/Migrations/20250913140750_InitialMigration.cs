@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AdmasAfroLink.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate_PostgreSQL : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,8 +53,8 @@ namespace AdmasAfroLink.API.Migrations
                     LastLoginAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     IsVerified = table.Column<bool>(type: "boolean", nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()"),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -85,7 +85,7 @@ namespace AdmasAfroLink.API.Migrations
                     Description = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     Category = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -102,7 +102,7 @@ namespace AdmasAfroLink.API.Migrations
                     Description = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     Category = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -120,7 +120,7 @@ namespace AdmasAfroLink.API.Migrations
                     ColorCode = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false, defaultValue: "#007bff"),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     UsageCount = table.Column<int>(type: "integer", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -247,7 +247,7 @@ namespace AdmasAfroLink.API.Migrations
                     IsDeletedBySender = table.Column<bool>(type: "boolean", nullable: false),
                     IsDeletedByReceiver = table.Column<bool>(type: "boolean", nullable: false),
                     ReadAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -276,7 +276,7 @@ namespace AdmasAfroLink.API.Migrations
                     Type = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     ActionUrl = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     IsRead = table.Column<bool>(type: "boolean", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
                     ReadAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
@@ -316,8 +316,8 @@ namespace AdmasAfroLink.API.Migrations
                     ApplicationCount = table.Column<int>(type: "integer", nullable: false),
                     IsFeatured = table.Column<bool>(type: "boolean", nullable: false),
                     IsUrgent = table.Column<bool>(type: "boolean", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()"),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -340,8 +340,8 @@ namespace AdmasAfroLink.API.Migrations
                     ReceiverId = table.Column<string>(type: "text", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     Message = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()"),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -364,7 +364,7 @@ namespace AdmasAfroLink.API.Migrations
                 {
                     UserId = table.Column<string>(type: "text", nullable: false),
                     InterestId = table.Column<int>(type: "integer", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -392,7 +392,7 @@ namespace AdmasAfroLink.API.Migrations
                     ProficiencyLevel = table.Column<int>(type: "integer", nullable: false),
                     IsEndorsed = table.Column<bool>(type: "boolean", nullable: false),
                     EndorsementCount = table.Column<int>(type: "integer", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -425,8 +425,8 @@ namespace AdmasAfroLink.API.Migrations
                     ProposedRate = table.Column<decimal>(type: "numeric(18,2)", precision: 18, scale: 2, nullable: true),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     ReviewNotes = table.Column<string>(type: "text", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()"),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -452,7 +452,7 @@ namespace AdmasAfroLink.API.Migrations
                     SkillId = table.Column<int>(type: "integer", nullable: false),
                     IsRequired = table.Column<bool>(type: "boolean", nullable: false),
                     RequiredLevel = table.Column<int>(type: "integer", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -477,7 +477,7 @@ namespace AdmasAfroLink.API.Migrations
                 {
                     OpportunityId = table.Column<int>(type: "integer", nullable: false),
                     TagId = table.Column<int>(type: "integer", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -501,16 +501,16 @@ namespace AdmasAfroLink.API.Migrations
                 columns: new[] { "Id", "Category", "CreatedAt", "Description", "IsActive", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Industry", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(429), "Tech innovations and trends", true, "Technology" },
-                    { 2, "Business", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3164), "Starting and running businesses", true, "Entrepreneurship" },
-                    { 3, "Creative", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3171), "African arts and cultural heritage", true, "Arts & Culture" },
-                    { 4, "Social Impact", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3173), "Educational development in Africa", true, "Education" },
-                    { 5, "Social Impact", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3175), "Health and wellness initiatives", true, "Healthcare" },
-                    { 6, "Business", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3178), "Financial services and fintech", true, "Finance" },
-                    { 7, "Industry", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3180), "Agricultural innovation and sustainability", true, "Agriculture" },
-                    { 8, "Creative", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3183), "African fashion and textile industry", true, "Fashion" },
-                    { 9, "Creative", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3185), "African music and entertainment", true, "Music" },
-                    { 10, "Recreation", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(3188), "Sports and fitness", true, "Sports" }
+                    { 1, "Industry", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(2201), "Tech innovations and trends", true, "Technology" },
+                    { 2, "Business", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3623), "Starting and running businesses", true, "Entrepreneurship" },
+                    { 3, "Creative", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3627), "African arts and cultural heritage", true, "Arts & Culture" },
+                    { 4, "Social Impact", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3628), "Educational development in Africa", true, "Education" },
+                    { 5, "Social Impact", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3630), "Health and wellness initiatives", true, "Healthcare" },
+                    { 6, "Business", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3631), "Financial services and fintech", true, "Finance" },
+                    { 7, "Industry", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3632), "Agricultural innovation and sustainability", true, "Agriculture" },
+                    { 8, "Creative", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3634), "African fashion and textile industry", true, "Fashion" },
+                    { 9, "Creative", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3635), "African music and entertainment", true, "Music" },
+                    { 10, "Recreation", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(3636), "Sports and fitness", true, "Sports" }
                 });
 
             migrationBuilder.InsertData(
@@ -518,16 +518,16 @@ namespace AdmasAfroLink.API.Migrations
                 columns: new[] { "Id", "Category", "CreatedAt", "Description", "IsActive", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Technology", new DateTime(2025, 9, 13, 12, 13, 52, 997, DateTimeKind.Utc).AddTicks(6862), "Full-stack web development", true, "Web Development" },
-                    { 2, "Technology", new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(1990), "iOS and Android app development", true, "Mobile Development" },
-                    { 3, "Design", new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2003), "Visual design and branding", true, "Graphic Design" },
-                    { 4, "Marketing", new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2006), "Online marketing and social media", true, "Digital Marketing" },
-                    { 5, "Management", new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2098), "Leading and managing projects", true, "Project Management" },
-                    { 6, "Technology", new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2101), "Data processing and analytics", true, "Data Analysis" },
-                    { 7, "Writing", new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2103), "Creating engaging content", true, "Content Writing" },
-                    { 8, "Creative", new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2106), "Professional photography", true, "Photography" },
-                    { 9, "Creative", new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2108), "Video creation and editing", true, "Video Production" },
-                    { 10, "Business", new DateTime(2025, 9, 13, 12, 13, 52, 998, DateTimeKind.Utc).AddTicks(2110), "Growing business opportunities", true, "Business Development" }
+                    { 1, "Technology", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(2035), "Full-stack web development", true, "Web Development" },
+                    { 2, "Technology", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3567), "iOS and Android app development", true, "Mobile Development" },
+                    { 3, "Design", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3571), "Visual design and branding", true, "Graphic Design" },
+                    { 4, "Marketing", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3572), "Online marketing and social media", true, "Digital Marketing" },
+                    { 5, "Management", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3603), "Leading and managing projects", true, "Project Management" },
+                    { 6, "Technology", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3669), "Data processing and analytics", true, "Data Analysis" },
+                    { 7, "Writing", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3671), "Creating engaging content", true, "Content Writing" },
+                    { 8, "Creative", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3673), "Professional photography", true, "Photography" },
+                    { 9, "Creative", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3675), "Video creation and editing", true, "Video Production" },
+                    { 10, "Business", new DateTime(2025, 9, 13, 14, 7, 49, 465, DateTimeKind.Utc).AddTicks(3676), "Growing business opportunities", true, "Business Development" }
                 });
 
             migrationBuilder.InsertData(
@@ -535,16 +535,16 @@ namespace AdmasAfroLink.API.Migrations
                 columns: new[] { "Id", "Category", "ColorCode", "CreatedAt", "IsActive", "Name", "UsageCount" },
                 values: new object[,]
                 {
-                    { 1, "Industry", "#007bff", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(5932), true, "Tech", 0 },
-                    { 2, "Industry", "#e83e8c", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8736), true, "Fashion", 0 },
-                    { 3, "Industry", "#fd7e14", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8743), true, "Music", 0 },
-                    { 4, "Industry", "#28a745", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8746), true, "Real Estate", 0 },
-                    { 5, "Work Type", "#6f42c1", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8749), true, "Remote", 0 },
-                    { 6, "Work Type", "#20c997", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8751), true, "Freelance", 0 },
-                    { 7, "Work Type", "#ffc107", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8754), true, "Full-time", 0 },
-                    { 8, "Work Type", "#6c757d", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8756), true, "Part-time", 0 },
-                    { 9, "Priority", "#dc3545", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8759), true, "Urgent", 0 },
-                    { 10, "Priority", "#17a2b8", new DateTime(2025, 9, 13, 12, 13, 53, 0, DateTimeKind.Utc).AddTicks(8762), true, "Featured", 0 }
+                    { 1, "Industry", "#007bff", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(5031), true, "Tech", 0 },
+                    { 2, "Industry", "#e83e8c", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6492), true, "Fashion", 0 },
+                    { 3, "Industry", "#fd7e14", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6496), true, "Music", 0 },
+                    { 4, "Industry", "#28a745", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6498), true, "Real Estate", 0 },
+                    { 5, "Work Type", "#6f42c1", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6499), true, "Remote", 0 },
+                    { 6, "Work Type", "#20c997", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6500), true, "Freelance", 0 },
+                    { 7, "Work Type", "#ffc107", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6501), true, "Full-time", 0 },
+                    { 8, "Work Type", "#6c757d", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6503), true, "Part-time", 0 },
+                    { 9, "Priority", "#dc3545", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6504), true, "Urgent", 0 },
+                    { 10, "Priority", "#17a2b8", new DateTime(2025, 9, 13, 14, 7, 49, 466, DateTimeKind.Utc).AddTicks(6505), true, "Featured", 0 }
                 });
 
             migrationBuilder.CreateIndex(

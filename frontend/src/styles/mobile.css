@@ -1,0 +1,416 @@
+/* ==========================================================================
+   Mobile-First Responsive Design - Additional Styles
+   ========================================================================== */
+
+/* Additional mobile optimizations */
+@media (max-width: 640px) {
+  /* Typography adjustments for mobile */
+  .hero-title {
+    font-size: var(--text-2xl);
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: var(--text-base);
+  }
+  
+  .section-title {
+    font-size: var(--text-xl);
+  }
+  
+  .section-subtitle {
+    font-size: var(--text-base);
+  }
+  
+  /* Mobile-specific spacing */
+  section {
+    padding: var(--space-12) 0;
+  }
+  
+  .container {
+    padding: 0 var(--space-3);
+  }
+  
+  /* Mobile trust badges */
+  .trust-badges {
+    gap: var(--space-2);
+  }
+  
+  .trust-number {
+    font-size: var(--text-xl);
+  }
+  
+  .trust-text {
+    font-size: var(--text-xs);
+  }
+  
+  /* Mobile anxiety cards */
+  .anxiety-grid {
+    gap: var(--space-6);
+  }
+  
+  .anxiety-card {
+    padding: var(--space-4);
+  }
+  
+  .anxiety-icon {
+    width: 50px;
+    height: 50px;
+    font-size: var(--text-lg);
+  }
+  
+  /* Mobile demo steps */
+  .demo-steps {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .step {
+    max-width: none;
+    justify-content: flex-start;
+  }
+  
+  .step-content h4 {
+    font-size: var(--text-sm);
+  }
+  
+  .step-content p {
+    font-size: var(--text-xs);
+  }
+  
+  /* Mobile option grid */
+  .option-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .option-card {
+    min-height: 80px;
+    padding: var(--space-4);
+  }
+  
+  .option-card i {
+    font-size: var(--text-xl);
+  }
+  
+  /* Mobile story cards */
+  .story-quote {
+    font-size: var(--text-base);
+  }
+  
+  .story-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  /* Mobile pricing cards */
+  .cost-breakdown {
+    gap: var(--space-6);
+  }
+  
+  .breakdown-card {
+    padding: var(--space-4);
+  }
+  
+  .cost-item, .roi-item {
+    padding: var(--space-2) 0;
+  }
+  
+  /* Mobile university logos */
+  .university-logos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+  
+  .university-logos img {
+    max-height: 40px;
+  }
+  
+  /* Mobile footer */
+  .footer-content {
+    gap: var(--space-6);
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .footer-links {
+    gap: var(--space-4);
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .hero-title {
+    font-size: var(--text-4xl);
+  }
+  
+  .stories-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .story-card.featured {
+    grid-column: 1 / -1;
+  }
+  
+  .cost-breakdown {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .breakdown-card.roi {
+    grid-column: 1 / -1;
+  }
+}
+
+/* High-resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .hero-background {
+    background-image: url('../assets/hero-bg@2x.jpg');
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --neutral-900: #f9fafb;
+    --neutral-700: #e5e7eb;
+    --neutral-500: #9ca3af;
+    --neutral-300: #374151;
+    --neutral-100: #1f2937;
+    --neutral-50: #111827;
+    --white: #111827;
+  }
+  
+  body {
+    background-color: var(--white);
+  }
+  
+  .navbar {
+    background: rgba(17, 24, 39, 0.95);
+  }
+  
+  .modal-content {
+    background: var(--neutral-50);
+    color: var(--neutral-900);
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .chat-toggle {
+    animation: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .chat-widget,
+  .modal,
+  .btn-primary,
+  .btn-secondary {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  .hero {
+    background: none !important;
+    color: black !important;
+  }
+  
+  .hero-overlay {
+    display: none;
+  }
+}
+
+/* Focus styles for accessibility */
+:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.btn-primary:focus,
+.btn-secondary:focus {
+  outline-offset: 4px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 10001;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Loading animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  transform: translateY(30px);
+  opacity: 0;
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Intersection observer animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Improved button interactions */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent);
+  transition: width 0.3s ease;
+}
+
+.btn-primary:hover::before {
+  width: 100%;
+}
+
+/* Enhanced card hover effects */
+.story-card,
+.anxiety-card,
+.breakdown-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.story-card::before,
+.anxiety-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.story-card:hover::before,
+.anxiety-card:hover::before {
+  left: 100%;
+}
+
+/* Enhanced form styles */
+.form-input:valid {
+  border-color: var(--secondary-color);
+}
+
+.form-input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--error);
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--neutral-900);
+  color: var(--white);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--border-radius);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+  z-index: 1000;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Performance optimizations */
+.hero-background,
+.story-image img {
+  will-change: transform;
+}
+
+/* Smooth scrolling for supported browsers */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}

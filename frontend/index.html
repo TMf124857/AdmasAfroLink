@@ -1,0 +1,2885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdmasAfroLink - Transform Your Career with Global Internships</title>
+    <meta name="description" content="Launch your global career with trusted international internships. Join thousands of students who've transformed their futures through our comprehensive support system.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="src/styles/mobile.css">
+    <link rel="stylesheet" href="src/styles/components.css">
+</head>
+<body>
+    <!-- Enhanced Mobile-First Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Mobile Header -->
+            <div class="mobile-header">
+                <div class="nav-brand">
+                    <img src="src/assets/logo.svg" alt="AdmasAfroLink" class="logo">
+                    <div class="brand-info">
+                        <span class="brand-text">AdmasAfroLink</span>
+                        <span class="platform-subtitle">Global Internships</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile Actions -->
+                <div class="mobile-actions">
+                    <button class="search-toggle" onclick="toggleMobileSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="nav-toggle" id="nav-toggle" onclick="toggleMobileMenu()">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Search Bar -->
+            <div class="mobile-search" id="mobile-search">
+                <div class="search-container">
+                    <input type="text" placeholder="Search opportunities, stories, companies..." class="mobile-search-input">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="search-close" onclick="toggleMobileSearch()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-suggestions">
+                    <div class="suggestion-item">
+                        <i class="fas fa-search"></i>
+                        <span>Tech internships Belgium</span>
+                    </div>
+                    <div class="suggestion-item">
+                        <i class="fas fa-search"></i>
+                        <span>Engineering opportunities</span>
+                    </div>
+                    <div class="suggestion-item">
+                        <i class="fas fa-search"></i>
+                        <span>Success stories</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation Menu -->
+            <div class="nav-menu desktop-only" id="nav-menu">
+                <div class="nav-links">
+                    <div class="nav-dropdown">
+                        <a href="#opportunities" class="nav-link dropdown-trigger">
+                            Opportunities
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-grid">
+                                <div class="dropdown-section">
+                                    <h4>By Industry</h4>
+                                    <a href="#tech">Technology</a>
+                                    <a href="#business">Business & Finance</a>
+                                    <a href="#engineering">Engineering</a>
+                                    <a href="#healthcare">Healthcare</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4>By Location</h4>
+                                    <a href="#belgium">Belgium</a>
+                                    <a href="#netherlands">Netherlands</a>
+                                    <a href="#germany">Germany</a>
+                                    <a href="#france">France</a>
+                                </div>
+                                <div class="dropdown-featured">
+                                    <div class="featured-opportunity">
+                                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=60&fit=crop" alt="Featured">
+                                        <div>
+                                            <h5>Software Engineering</h5>
+                                            <p>Brussels Tech Hub</p>
+                                            <span class="salary">€45,000+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#success-stories" class="nav-link">Success Stories</a>
+                    <a href="#how-it-works" class="nav-link">How It Works</a>
+                    <a href="#support" class="nav-link">Support</a>
+                </div>
+                
+                <div class="nav-portals">
+                    <div class="portal-dropdown">
+                        <button class="portal-trigger" id="portal-trigger">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Login</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="portal-menu" id="portal-menu">
+                            <a href="#student-login" class="portal-link">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <span class="portal-title">Student Portal</span>
+                                    <span class="portal-desc">Apply & track progress</span>
+                                </div>
+                            </a>
+                            <a href="#company-login" class="portal-link">
+                                <i class="fas fa-building"></i>
+                                <div>
+                                    <span class="portal-title">Company Portal</span>
+                                    <span class="portal-desc">Post opportunities</span>
+                                </div>
+                            </a>
+                            <a href="#university-login" class="portal-link">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <span class="portal-title">University Portal</span>
+                                    <span class="portal-desc">Manage students</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <button class="nav-cta" onclick="openApplicationModal()">Start Application</button>
+                </div>
+            </div>
+            
+            <!-- Mobile Slide-out Menu -->
+            <div class="mobile-menu" id="mobile-menu">
+                <div class="mobile-menu-header">
+                    <div class="mobile-user-info">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-details">
+                            <span class="greeting">Welcome!</span>
+                            <span class="action">Join thousands of successful students</span>
+                        </div>
+                    </div>
+                    <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="mobile-menu-content">
+                    <!-- Quick Actions -->
+                    <div class="mobile-quick-actions">
+                        <button class="quick-action-btn primary" onclick="openApplicationModal()">
+                            <i class="fas fa-rocket"></i>
+                            <span>Start Application</span>
+                        </button>
+                        <button class="quick-action-btn secondary" onclick="window.location.href='#opportunities'">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Browse Jobs</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Navigation Links -->
+                    <div class="mobile-nav-links">
+                        <div class="mobile-nav-section">
+                            <h4>Explore</h4>
+                            <div class="mobile-nav-group">
+                                <a href="#opportunities" class="mobile-nav-link" onclick="closeMobileMenu()">
+                                    <i class="fas fa-briefcase"></i>
+                                    <div>
+                                        <span>Find Opportunities</span>
+                                        <small>Browse 500+ internships</small>
+                                    </div>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <a href="#success-stories" class="mobile-nav-link" onclick="closeMobileMenu()">
+                                    <i class="fas fa-star"></i>
+                                    <div>
+                                        <span>Success Stories</span>
+                                        <small>Read inspiring journeys</small>
+                                    </div>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <a href="#how-it-works" class="mobile-nav-link" onclick="closeMobileMenu()">
+                                    <i class="fas fa-question-circle"></i>
+                                    <div>
+                                        <span>How It Works</span>
+                                        <small>Step-by-step guide</small>
+                                    </div>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-nav-section">
+                            <h4>Account</h4>
+                            <div class="mobile-nav-group">
+                                <a href="#student-login" class="mobile-nav-link" onclick="closeMobileMenu()">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <div>
+                                        <span>Student Login</span>
+                                        <small>Access your dashboard</small>
+                                    </div>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <a href="#company-login" class="mobile-nav-link" onclick="closeMobileMenu()">
+                                    <i class="fas fa-building"></i>
+                                    <div>
+                                        <span>Company Portal</span>
+                                        <small>Post opportunities</small>
+                                    </div>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <a href="#university-login" class="mobile-nav-link" onclick="closeMobileMenu()">
+                                    <i class="fas fa-university"></i>
+                                    <div>
+                                        <span>University Portal</span>
+                                        <small>Manage programs</small>
+                                    </div>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-nav-section">
+                            <h4>Industries</h4>
+                            <div class="mobile-nav-group industries-grid">
+                                <a href="#tech" class="industry-link" onclick="closeMobileMenu()">
+                                    <div class="industry-icon">💻</div>
+                                    <span>Technology</span>
+                                </a>
+                                <a href="#business" class="industry-link" onclick="closeMobileMenu()">
+                                    <div class="industry-icon">💼</div>
+                                    <span>Business</span>
+                                </a>
+                                <a href="#engineering" class="industry-link" onclick="closeMobileMenu()">
+                                    <div class="industry-icon">⚙️</div>
+                                    <span>Engineering</span>
+                                </a>
+                                <a href="#healthcare" class="industry-link" onclick="closeMobileMenu()">
+                                    <div class="industry-icon">🏥</div>
+                                    <span>Healthcare</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Footer -->
+                    <div class="mobile-menu-footer">
+                        <div class="contact-info">
+                            <a href="tel:+256750554808" class="contact-link">
+                                <i class="fas fa-phone"></i>
+                                <span>+256 750 554 808</span>
+                            </a>
+                            <a href="mailto:info@admasafrolink.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>info@admasafrolink.com</span>
+                            </a>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Overlay -->
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section - Platform Overview -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-globe"></i>
+                    <span>Comprehensive Internship Management Platform</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Connect Students, Companies & Universities
+                    <span class="highlight">Seamlessly</span>
+                </h1>
+                <p class="hero-subtitle">
+                    A complete platform managing the entire internship lifecycle - from opportunity posting 
+                    to performance evaluation. Built for Ugandan institutions with global reach, ensuring 
+                    compliance and excellence at every step.
+                </p>
+                
+                <div class="platform-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">16</div>
+                        <div class="stat-label">Workflow Stages</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">User Types</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Compliance</div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Trust Framework -->
+                <div class="trust-framework">
+                    <div class="trust-badges">
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <span class="trust-number">95%</span>
+                            <span class="trust-text">Satisfaction Rate</span>
+                            <span class="trust-detail">2,847 verified reviews</span>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <span class="trust-number">50+</span>
+                            <span class="trust-text">Countries</span>
+                            <span class="trust-detail">Active partnerships</span>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <span class="trust-number">24/7</span>
+                            <span class="trust-text">Local Support</span>
+                            <span class="trust-detail">Multilingual team</span>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <i class="fas fa-shield-check"></i>
+                            </div>
+                            <span class="trust-number">100%</span>
+                            <span class="trust-text">Secure & Compliant</span>
+                            <span class="trust-detail">Bank-level security</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Credibility Indicators -->
+                    <div class="credibility-bar">
+                        <div class="credibility-item">
+                            <i class="fas fa-award"></i>
+                            <span>Award-Winning Platform</span>
+                        </div>
+                        <div class="credibility-item">
+                            <i class="fas fa-university"></i>
+                            <span>200+ University Partners</span>
+                        </div>
+                        <div class="credibility-item">
+                            <i class="fas fa-building"></i>
+                            <span>Fortune 500 Companies</span>
+                        </div>
+                        <div class="credibility-item">
+                            <i class="fas fa-users"></i>
+                            <span>15,000+ Alumni Network</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <button class="btn-primary" onclick="openApplication()">
+                        Start Your Global Career
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <p class="cta-note">
+                        <span class="guarantee-item">✓ No application fee</span> • 
+                        <span class="guarantee-item">✓ Takes 3 minutes</span> • 
+                        <span class="guarantee-item">✓ Get matched instantly</span>
+                    </p>
+                    <div class="security-badges">
+                        <div class="security-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Bank-Level Security</span>
+                        </div>
+                        <div class="security-badge">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Money-Back Guarantee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <img src="src/assets/hero-intern.jpg" alt="Confident intern in professional setting" class="main-image">
+                    <div class="floating-testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <div class="stars">★★★★★</div>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                            <p>"This internship opened doors I never imagined possible. The support was incredible!"</p>
+                            <div class="testimonial-author">
+                                <img src="src/assets/testimonial-1.jpg" alt="Sarah Chen">
+                                <div class="author-info">
+                                    <span class="author-name">Sarah Chen</span>
+                                    <span class="author-position">Now at Google</span>
+                                    <span class="author-location">Singapore → San Francisco</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-outcome">
+                                <span class="outcome-badge">350% Salary Increase</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Trust Elements -->
+                    <div class="floating-stats">
+                        <div class="stat-bubble">
+                            <span class="stat-number">2,847</span>
+                            <span class="stat-text">Success Stories</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Alumni Stories Section -->
+    <section class="alumni-stories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Real Success Stories, Real Transformations</h2>
+                <p class="section-subtitle">Meet the people who turned their dreams into reality through our internship program</p>
+            </div>
+
+            <!-- Featured Story Video -->
+            <div class="featured-story">
+                <div class="story-video">
+                    <div class="video-container">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=450&fit=crop" alt="Sarah's Success Story">
+                            <div class="play-overlay">
+                                <button class="play-btn" onclick="playFeaturedVideo()">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="video-duration">3:42</div>
+                        </div>
+                        <video id="featured-video" controls style="display: none;">
+                            <source src="#" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="story-content">
+                    <div class="story-meta">
+                        <span class="story-category">🎓 Engineering</span>
+                        <span class="story-date">3 months ago</span>
+                    </div>
+                    <h3>From Village Dreams to Silicon Valley Success</h3>
+                    <p class="story-excerpt">
+                        Sarah Nakato grew up in rural Uganda with limited access to technology. Today, she's a software engineer at a leading Belgian tech company, earning €65,000+ annually and sponsoring three other students from her village.
+                    </p>
+                    
+                    <div class="transformation-metrics">
+                        <div class="metric">
+                            <div class="metric-value">€65,000</div>
+                            <div class="metric-label">Annual Salary</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">18 months</div>
+                            <div class="metric-label">Journey Time</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">450%</div>
+                            <div class="metric-label">Income Increase</div>
+                        </div>
+                    </div>
+
+                    <div class="story-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Sarah Nakato" class="author-photo">
+                        <div class="author-info">
+                            <strong>Sarah Nakato</strong>
+                            <span>Senior Software Engineer</span>
+                            <span class="company">TechFlow Belgium</span>
+                        </div>
+                        <div class="story-verification">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verified Graduate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story Grid -->
+            <div class="stories-grid">
+                <!-- Story 1 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop" alt="James Success Story">
+                        <div class="story-overlay">
+                            <div class="story-type">
+                                <i class="fas fa-video"></i>
+                                <span>Video Story</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-body">
+                        <div class="story-category-badge business">💼 Business</div>
+                        <h4>From Street Vendor to Business Analyst</h4>
+                        <p class="story-summary">
+                            James transformed from selling phone cards on Kampala streets to becoming a business analyst at a Fortune 500 company in Brussels.
+                        </p>
+                        
+                        <div class="transformation-highlights">
+                            <div class="highlight">
+                                <strong>Before:</strong> $50/month income
+                            </div>
+                            <div class="highlight">
+                                <strong>After:</strong> €4,200/month salary
+                            </div>
+                            <div class="highlight">
+                                <strong>Impact:</strong> Built school in home village
+                            </div>
+                        </div>
+                        
+                        <div class="story-footer">
+                            <div class="author-mini">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="James">
+                                <span>James Mukasa</span>
+                            </div>
+                            <button class="read-story-btn" onclick="openStoryModal('james')">
+                                <i class="fas fa-book-open"></i>
+                                Read Full Story
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=250&fit=crop" alt="Grace Success Story">
+                        <div class="story-overlay">
+                            <div class="story-type">
+                                <i class="fas fa-microphone"></i>
+                                <span>Audio Story</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-body">
+                        <div class="story-category-badge healthcare">🏥 Healthcare</div>
+                        <h4>Single Mother Becomes EU Nurse</h4>
+                        <p class="story-summary">
+                            Grace balanced raising three children while pursuing her nursing dream. Now she's a registered nurse in Belgium helping other immigrant families.
+                        </p>
+                        
+                        <div class="transformation-highlights">
+                            <div class="highlight">
+                                <strong>Challenge:</strong> Single mother of 3
+                            </div>
+                            <div class="highlight">
+                                <strong>Achievement:</strong> EU Nursing License
+                            </div>
+                            <div class="highlight">
+                                <strong>Impact:</strong> Brought family to Belgium
+                            </div>
+                        </div>
+                        
+                        <div class="story-footer">
+                            <div class="author-mini">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face" alt="Grace">
+                                <span>Grace Nalule</span>
+                            </div>
+                            <button class="read-story-btn" onclick="openStoryModal('grace')">
+                                <i class="fas fa-book-open"></i>
+                                Read Full Story
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=250&fit=crop" alt="Peter Success Story">
+                        <div class="story-overlay">
+                            <div class="story-type">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Written Story</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-body">
+                        <div class="story-category-badge engineering">⚙️ Engineering</div>
+                        <h4>Mechanical Engineer's European Dream</h4>
+                        <p class="story-summary">
+                            Peter overcame language barriers and cultural differences to become a leading mechanical engineer at Europe's largest automotive company.
+                        </p>
+                        
+                        <div class="transformation-highlights">
+                            <div class="highlight">
+                                <strong>Journey:</strong> 2 years of preparation
+                            </div>
+                            <div class="highlight">
+                                <strong>Success:</strong> Lead Engineer role
+                            </div>
+                            <div class="highlight">
+                                <strong>Growth:</strong> Team of 12 engineers
+                            </div>
+                        </div>
+                        
+                        <div class="story-footer">
+                            <div class="author-mini">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Peter">
+                                <span>Peter Ssali</span>
+                            </div>
+                            <button class="read-story-btn" onclick="openStoryModal('peter')">
+                                <i class="fas fa-book-open"></i>
+                                Read Full Story
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 4 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=250&fit=crop" alt="Maria Success Story">
+                        <div class="story-overlay">
+                            <div class="story-type">
+                                <i class="fas fa-video"></i>
+                                <span>Video Story</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-body">
+                        <div class="story-category-badge finance">💰 Finance</div>
+                        <h4>Accountant to Financial Advisor</h4>
+                        <p class="story-summary">
+                            Maria leveraged her accounting background to become a certified financial advisor, helping African diaspora with investment strategies.
+                        </p>
+                        
+                        <div class="transformation-highlights">
+                            <div class="highlight">
+                                <strong>Education:</strong> CFA Certification
+                            </div>
+                            <div class="highlight">
+                                <strong>Clients:</strong> 200+ investors
+                            </div>
+                            <div class="highlight">
+                                <strong>Impact:</strong> €50M+ assets managed
+                            </div>
+                        </div>
+                        
+                        <div class="story-footer">
+                            <div class="author-mini">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face" alt="Maria">
+                                <span>Maria Nakku</span>
+                            </div>
+                            <button class="read-story-btn" onclick="openStoryModal('maria')">
+                                <i class="fas fa-book-open"></i>
+                                Read Full Story
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Statistics -->
+            <div class="success-stats">
+                <div class="stats-header">
+                    <h3>What Our Alumni Achieve</h3>
+                    <p>Real data from graduates who completed our program</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-value">€45,000</div>
+                        <div class="stat-label">Average Starting Salary</div>
+                        <div class="stat-note">250% higher than Uganda average</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">🏠</div>
+                        <div class="stat-value">89%</div>
+                        <div class="stat-label">Own Their Home</div>
+                        <div class="stat-note">Within 3 years of graduation</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">👨‍👩‍👧‍👦</div>
+                        <div class="stat-value">76%</div>
+                        <div class="stat-label">Bring Family to EU</div>
+                        <div class="stat-note">Help loved ones immigrate</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">🎓</div>
+                        <div class="stat-value">65%</div>
+                        <div class="stat-label">Continue Education</div>
+                        <div class="stat-note">Master's degrees in Europe</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">🌍</div>
+                        <div class="stat-value">450+</div>
+                        <div class="stat-label">Lives Changed</div>
+                        <div class="stat-note">Including family members</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">🏢</div>
+                        <div class="stat-value">92%</div>
+                        <div class="stat-label">Career Satisfaction</div>
+                        <div class="stat-note">Love their new careers</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impact Story -->
+            <div class="impact-story">
+                <div class="impact-content">
+                    <div class="impact-header">
+                        <h3>The Ripple Effect of Success</h3>
+                        <p>Every successful graduate creates waves of positive change</p>
+                    </div>
+                    
+                    <div class="impact-chain">
+                        <div class="impact-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Individual Success</h4>
+                                <p>Graduate secures high-paying European job</p>
+                            </div>
+                        </div>
+                        
+                        <div class="impact-arrow">→</div>
+                        
+                        <div class="impact-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Family Transformation</h4>
+                                <p>Supports family, brings relatives to Europe</p>
+                            </div>
+                        </div>
+                        
+                        <div class="impact-arrow">→</div>
+                        
+                        <div class="impact-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Community Investment</h4>
+                                <p>Funds education, healthcare in home village</p>
+                            </div>
+                        </div>
+                        
+                        <div class="impact-arrow">→</div>
+                        
+                        <div class="impact-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Next Generation</h4>
+                                <p>Mentors and sponsors other students</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="impact-quote">
+                        <blockquote>
+                            "Success isn't just about changing your own life - it's about lifting up everyone around you. Every graduate becomes a bridge between two worlds."
+                        </blockquote>
+                        <cite>- Dr. Admas Kato, Program Director</cite>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="stories-cta">
+                <h3>Ready to Write Your Own Success Story?</h3>
+                <p>Join hundreds of alumni who transformed their lives through our program</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="openApplicationModal()">
+                        <i class="fas fa-rocket"></i>
+                        Start Your Journey
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-video"></i>
+                        Watch All Stories
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Pricing Transparency Section -->
+    <section class="pricing-transparency-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Complete Pricing Transparency</h2>
+                <p class="section-subtitle">No hidden fees, no surprises. See exactly what you'll invest in your future success.</p>
+            </div>
+
+            <!-- Interactive Cost Calculator -->
+            <div class="cost-calculator">
+                <div class="calculator-header">
+                    <h3>Calculate Your Total Investment</h3>
+                    <p>Customize your program and see real-time costs</p>
+                </div>
+                
+                <div class="calculator-interface">
+                    <div class="calculator-controls">
+                        <div class="control-group">
+                            <label for="program-type">Program Type</label>
+                            <select id="program-type" onchange="updateCalculator()">
+                                <option value="standard" data-base="2500">Standard Internship (6 months)</option>
+                                <option value="extended" data-base="4200">Extended Program (12 months)</option>
+                                <option value="premium" data-base="6800">Premium with Mentorship (18 months)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="industry-field">Industry Field</label>
+                            <select id="industry-field" onchange="updateCalculator()">
+                                <option value="tech" data-multiplier="1.2">Technology</option>
+                                <option value="business" data-multiplier="1.0">Business & Finance</option>
+                                <option value="engineering" data-multiplier="1.1">Engineering</option>
+                                <option value="healthcare" data-multiplier="1.3">Healthcare</option>
+                                <option value="marketing" data-multiplier="0.9">Marketing & Sales</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="support-level">Support Level</label>
+                            <select id="support-level" onchange="updateCalculator()">
+                                <option value="basic" data-cost="0">Basic Support (Included)</option>
+                                <option value="enhanced" data-cost="400">Enhanced Support (+€400)</option>
+                                <option value="premium" data-cost="800">1-on-1 Mentoring (+€800)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="location-preference">Location Preference</label>
+                            <select id="location-preference" onchange="updateCalculator()">
+                                <option value="any" data-cost="0">Flexible (Any EU Country)</option>
+                                <option value="belgium" data-cost="200">Belgium Focused (+€200)</option>
+                                <option value="netherlands" data-cost="300">Netherlands Focused (+€300)</option>
+                                <option value="germany" data-cost="250">Germany Focused (+€250)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-results">
+                        <div class="cost-breakdown">
+                            <h4>Your Investment Breakdown</h4>
+                            <div class="breakdown-item">
+                                <span>Base Program Fee</span>
+                                <span id="base-cost">€2,500</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Industry Specialization</span>
+                                <span id="industry-cost">€0</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Support Level</span>
+                                <span id="support-cost">€0</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Location Preference</span>
+                                <span id="location-cost">€0</span>
+                            </div>
+                            <div class="breakdown-item discount">
+                                <span>Early Bird Discount (30%)</span>
+                                <span id="discount-amount">-€750</span>
+                            </div>
+                            <div class="breakdown-total">
+                                <span>Total Investment</span>
+                                <span id="total-cost">€1,750</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-options">
+                            <h4>Flexible Payment Plans</h4>
+                            <div class="payment-plan">
+                                <div class="plan-option active" onclick="selectPaymentPlan('full')">
+                                    <div class="plan-type">Full Payment</div>
+                                    <div class="plan-amount" id="full-payment">€1,750</div>
+                                    <div class="plan-savings">Save 10% (€175)</div>
+                                </div>
+                                <div class="plan-option" onclick="selectPaymentPlan('split')">
+                                    <div class="plan-type">Split Payment</div>
+                                    <div class="plan-amount" id="split-payment">€875 × 2</div>
+                                    <div class="plan-savings">No additional fees</div>
+                                </div>
+                                <div class="plan-option" onclick="selectPaymentPlan('monthly')">
+                                    <div class="plan-type">Monthly Plan</div>
+                                    <div class="plan-amount" id="monthly-payment">€350 × 6</div>
+                                    <div class="plan-savings">Small service fee</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="roi-calculator">
+                            <h4>Return on Investment</h4>
+                            <div class="roi-metrics">
+                                <div class="roi-item">
+                                    <div class="roi-value" id="salary-increase">+250%</div>
+                                    <div class="roi-label">Average Salary Increase</div>
+                                </div>
+                                <div class="roi-item">
+                                    <div class="roi-value" id="payback-time">4-6 months</div>
+                                    <div class="roi-label">Investment Payback</div>
+                                </div>
+                                <div class="roi-item">
+                                    <div class="roi-value" id="lifetime-value">€180,000+</div>
+                                    <div class="roi-label">5-Year Career Value</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program Comparison Table -->
+            <div class="program-comparison">
+                <div class="comparison-header">
+                    <h3>Compare All Programs</h3>
+                    <p>Choose the perfect program for your career goals</p>
+                </div>
+                
+                <div class="comparison-table">
+                    <div class="comparison-column">
+                        <div class="column-header features">
+                            <h4>Features</h4>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">Program Duration</div>
+                            <div class="feature-item">Company Placement</div>
+                            <div class="feature-item">Language Training</div>
+                            <div class="feature-item">CV/Resume Optimization</div>
+                            <div class="feature-item">Interview Preparation</div>
+                            <div class="feature-item">Visa Support</div>
+                            <div class="feature-item">Accommodation Help</div>
+                            <div class="feature-item">Personal Mentor</div>
+                            <div class="feature-item">Industry Certification</div>
+                            <div class="feature-item">Job Guarantee</div>
+                            <div class="feature-item">Post-Program Support</div>
+                            <div class="feature-item">Alumni Network Access</div>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-column standard">
+                        <div class="column-header">
+                            <h4>Standard</h4>
+                            <div class="price">€1,750</div>
+                            <div class="original-price">€2,500</div>
+                            <div class="popular-badge">Most Popular</div>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">✓ 6 months</div>
+                            <div class="feature-item">✓ Guaranteed placement</div>
+                            <div class="feature-item">✓ Basic (30 hours)</div>
+                            <div class="feature-item">✓ Professional review</div>
+                            <div class="feature-item">✓ 5 mock interviews</div>
+                            <div class="feature-item">✓ Full assistance</div>
+                            <div class="feature-item">✓ Recommendations</div>
+                            <div class="feature-item">○ Group mentoring</div>
+                            <div class="feature-item">○ Industry basics</div>
+                            <div class="feature-item">✓ 6-month guarantee</div>
+                            <div class="feature-item">✓ 1 year</div>
+                            <div class="feature-item">✓ Full access</div>
+                        </div>
+                        <div class="column-footer">
+                            <button class="select-plan-btn" onclick="selectProgram('standard')">
+                                Select Standard
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-column extended">
+                        <div class="column-header">
+                            <h4>Extended</h4>
+                            <div class="price">€2,940</div>
+                            <div class="original-price">€4,200</div>
+                            <div class="value-badge">Best Value</div>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">✓ 12 months</div>
+                            <div class="feature-item">✓ Premium placement</div>
+                            <div class="feature-item">✓ Advanced (60 hours)</div>
+                            <div class="feature-item">✓ Expert optimization</div>
+                            <div class="feature-item">✓ 10 mock interviews</div>
+                            <div class="feature-item">✓ Full assistance</div>
+                            <div class="feature-item">✓ Secured housing</div>
+                            <div class="feature-item">✓ 1-on-1 mentor</div>
+                            <div class="feature-item">✓ Professional cert</div>
+                            <div class="feature-item">✓ 12-month guarantee</div>
+                            <div class="feature-item">✓ 2 years</div>
+                            <div class="feature-item">✓ Premium access</div>
+                        </div>
+                        <div class="column-footer">
+                            <button class="select-plan-btn" onclick="selectProgram('extended')">
+                                Select Extended
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-column premium">
+                        <div class="column-header">
+                            <h4>Premium</h4>
+                            <div class="price">€4,760</div>
+                            <div class="original-price">€6,800</div>
+                            <div class="elite-badge">Elite</div>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">✓ 18 months</div>
+                            <div class="feature-item">✓ Executive placement</div>
+                            <div class="feature-item">✓ Mastery (100 hours)</div>
+                            <div class="feature-item">✓ Executive review</div>
+                            <div class="feature-item">✓ Unlimited practice</div>
+                            <div class="feature-item">✓ Expedited processing</div>
+                            <div class="feature-item">✓ Premium housing</div>
+                            <div class="feature-item">✓ Dedicated mentor</div>
+                            <div class="feature-item">✓ Industry leadership</div>
+                            <div class="feature-item">✓ Lifetime guarantee</div>
+                            <div class="feature-item">✓ Lifetime</div>
+                            <div class="feature-item">✓ VIP access</div>
+                        </div>
+                        <div class="column-footer">
+                            <button class="select-plan-btn" onclick="selectProgram('premium')">
+                                Select Premium
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Aid & Scholarships -->
+            <div class="financial-aid">
+                <div class="aid-header">
+                    <h3>Financial Aid & Scholarships</h3>
+                    <p>We believe talent shouldn't be limited by financial constraints</p>
+                </div>
+                
+                <div class="aid-options">
+                    <div class="aid-card">
+                        <div class="aid-icon">🎓</div>
+                        <h4>Merit Scholarships</h4>
+                        <div class="aid-amount">Up to 50% off</div>
+                        <p>Academic excellence and leadership potential scholarships</p>
+                        <ul>
+                            <li>GPA 3.5+ qualification</li>
+                            <li>Leadership experience required</li>
+                            <li>Essay and interview process</li>
+                        </ul>
+                        <button class="aid-apply-btn" onclick="applyForAid('merit')">Apply Now</button>
+                    </div>
+                    
+                    <div class="aid-card">
+                        <div class="aid-icon">🌍</div>
+                        <h4>Need-Based Aid</h4>
+                        <div class="aid-amount">Up to 70% off</div>
+                        <p>Financial hardship assistance for qualified candidates</p>
+                        <ul>
+                            <li>Family income verification</li>
+                            <li>Financial documents required</li>
+                            <li>Payment plan options</li>
+                        </ul>
+                        <button class="aid-apply-btn" onclick="applyForAid('need')">Apply Now</button>
+                    </div>
+                    
+                    <div class="aid-card">
+                        <div class="aid-icon">🚀</div>
+                        <h4>Industry Sponsorship</h4>
+                        <div class="aid-amount">Full sponsorship</div>
+                        <p>Company-sponsored programs for high-potential candidates</p>
+                        <ul>
+                            <li>Skills assessment required</li>
+                            <li>Commitment to sponsor company</li>
+                            <li>Accelerated placement track</li>
+                        </ul>
+                        <button class="aid-apply-btn" onclick="applyForAid('sponsor')">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Money-Back Guarantee -->
+            <div class="guarantee-section">
+                <div class="guarantee-content">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="guarantee-text">
+                        <h3>100% Success Guarantee</h3>
+                        <p>If you don't secure an internship within 6 months of program completion, we'll refund 100% of your program fees. No questions asked.</p>
+                        <div class="guarantee-stats">
+                            <div class="stat">
+                                <strong>94%</strong>
+                                <span>Success Rate</span>
+                            </div>
+                            <div class="stat">
+                                <strong>€0</strong>
+                                <span>Hidden Fees</span>
+                            </div>
+                            <div class="stat">
+                                <strong>30 days</strong>
+                                <span>Full Refund Window</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost Comparison with Alternatives -->
+            <div class="cost-comparison">
+                <h3>Compare with Alternatives</h3>
+                <p>See how our program compares to other career advancement options</p>
+                
+                <div class="comparison-chart">
+                    <div class="comparison-item admas">
+                        <h4>AdmasAfroLink Program</h4>
+                        <div class="cost-amount">€1,750 - €4,760</div>
+                        <div class="timeline">6-18 months</div>
+                        <div class="success-rate">94% success rate</div>
+                        <div class="benefits">
+                            <span class="benefit">✓ Guaranteed placement</span>
+                            <span class="benefit">✓ Visa support</span>
+                            <span class="benefit">✓ Ongoing mentorship</span>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-item university">
+                        <h4>Master's Degree (EU)</h4>
+                        <div class="cost-amount">€15,000 - €40,000</div>
+                        <div class="timeline">2-3 years</div>
+                        <div class="success-rate">No job guarantee</div>
+                        <div class="benefits">
+                            <span class="benefit">○ Academic credential</span>
+                            <span class="benefit">× Limited practical experience</span>
+                            <span class="benefit">× No job placement</span>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-item bootcamp">
+                        <h4>Online Bootcamp</h4>
+                        <div class="cost-amount">€8,000 - €15,000</div>
+                        <div class="timeline">3-6 months</div>
+                        <div class="success-rate">60% completion rate</div>
+                        <div class="benefits">
+                            <span class="benefit">○ Skill development</span>
+                            <span class="benefit">× No visa support</span>
+                            <span class="benefit">× Limited networking</span>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-item diy">
+                        <h4>Self-Application</h4>
+                        <div class="cost-amount">€500 - €2,000</div>
+                        <div class="timeline">6-24 months</div>
+                        <div class="success-rate">15% success rate</div>
+                        <div class="benefits">
+                            <span class="benefit">○ Low upfront cost</span>
+                            <span class="benefit">× No guidance</span>
+                            <span class="benefit">× High failure rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing CTA -->
+            <div class="pricing-cta">
+                <h3>Ready to Invest in Your Future?</h3>
+                <p>Join thousands who've transformed their careers through our program</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="openApplicationModal()">
+                        <i class="fas fa-calculator"></i>
+                        Calculate Your Investment
+                    </button>
+                    <button class="btn btn-outline" onclick="scheduleConsultation()">
+                        <i class="fas fa-phone"></i>
+                        Schedule Free Consultation
+                    </button>
+                </div>
+                <div class="cta-guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>30-day money-back guarantee • No hidden fees • Flexible payment plans</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Strategic Leadership Team</h2>
+                <p>Experienced professionals committed to connecting European talent with African opportunities</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Fadhila Saad</h3>
+                        <div class="member-role">Project Manager</div>
+                        <div class="member-department">Strategic Leadership</div>
+                        <p>Leading strategic initiatives and overseeing end-to-end operational excellence for international internship placements.</p>
+                        <div class="member-specialties">
+                            <span class="specialty">Operations Management</span>
+                            <span class="specialty">Strategic Planning</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Dirk van Merode</h3>
+                        <div class="member-role">Partnerships Lead</div>
+                        <div class="member-department">Global Placements & Partner Relations</div>
+                        <p>Cultivating strategic partnerships with leading European organizations and ensuring quality placement matches.</p>
+                        <div class="member-specialties">
+                            <span class="specialty">Partnership Development</span>
+                            <span class="specialty">Relationship Management</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Tsegay Merhazion</h3>
+                        <div class="member-role">Tech Lead</div>
+                        <div class="member-department">Technology & Innovation</div>
+                        <p>Architecting scalable technology solutions and automation systems to streamline the internship placement process.</p>
+                        <div class="member-specialties">
+                            <span class="specialty">Platform Development</span>
+                            <span class="specialty">Systems Integration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-globe-europe"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Busingye Abid Weere</h3>
+                        <div class="member-role">EU Liaison & Advisor</div>
+                        <div class="member-department">Student Engagement & Recruitment</div>
+                        <p>Providing expert guidance on European regulations and serving as the primary liaison for EU-based partnerships.</p>
+                        <div class="member-specialties">
+                            <span class="specialty">EU Compliance</span>
+                            <span class="specialty">Cross-Cultural Communication</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Organizational Excellence -->
+            <div class="org-excellence">
+                <div class="excellence-header">
+                    <h3>Our Organizational Excellence</h3>
+                    <p>Built on proven frameworks for scalable international operations</p>
+                </div>
+                
+                <div class="excellence-pillars">
+                    <div class="pillar">
+                        <div class="pillar-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h4>End-to-End Service Model</h4>
+                        <p>Complete project lifecycle management from initial inquiry to post-program engagement, without reliance on third parties for core functions.</p>
+                    </div>
+                    
+                    <div class="pillar">
+                        <div class="pillar-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>Technology-Driven Automation</h4>
+                        <p>Integrated CRM, ATS, and program management systems that eliminate manual tasks and enable scalable growth.</p>
+                    </div>
+                    
+                    <div class="pillar">
+                        <div class="pillar-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Compliance & Risk Management</h4>
+                        <p>Robust framework for legal compliance, ethical practice, and comprehensive risk management across all operations.</p>
+                    </div>
+                    
+                    <div class="pillar">
+                        <div class="pillar-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Scalable Departmental Structure</h4>
+                        <p>Strategic evolution from lean startup to specialized departments with defined KPIs and operational excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internship Fields Section -->
+    <section class="internship-fields-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Internship Opportunities Across Key Sectors</h2>
+                <p>Connect with innovative, impact-led organizations across diverse industries</p>
+            </div>
+            
+            <div class="fields-grid">
+                <div class="field-card healthcare">
+                    <div class="field-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>Healthcare</h3>
+                        <div class="field-specialties">
+                            <span class="specialty-item">Telehealth Pilots</span>
+                            <span class="specialty-item">Community Outreach Programs</span>
+                            <span class="specialty-item">Health System Innovation</span>
+                        </div>
+                        <p>Work with leading healthcare organizations to implement innovative telehealth solutions and community health programs that impact thousands of lives.</p>
+                        <div class="field-stats">
+                            <div class="stat">
+                                <strong>85+</strong>
+                                <span>Partner Hospitals</span>
+                            </div>
+                            <div class="stat">
+                                <strong>95%</strong>
+                                <span>Program Completion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field-card technology">
+                    <div class="field-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>ICT & Engineering</h3>
+                        <div class="field-specialties">
+                            <span class="specialty-item">Network Upgrades</span>
+                            <span class="specialty-item">Cybersecurity Implementations</span>
+                            <span class="specialty-item">Infrastructure Development</span>
+                        </div>
+                        <p>Join cutting-edge technology projects that are transforming Uganda's digital infrastructure and cybersecurity capabilities.</p>
+                        <div class="field-stats">
+                            <div class="stat">
+                                <strong>120+</strong>
+                                <span>Tech Companies</span>
+                            </div>
+                            <div class="stat">
+                                <strong>€45K</strong>
+                                <span>Avg Starting Salary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field-card business">
+                    <div class="field-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>Business & Finance</h3>
+                        <div class="field-specialties">
+                            <span class="specialty-item">Market Studies</span>
+                            <span class="specialty-item">Financial Modeling Projects</span>
+                            <span class="specialty-item">Investment Analysis</span>
+                        </div>
+                        <p>Contribute to strategic market research and financial modeling projects that drive business growth and investment decisions.</p>
+                        <div class="field-stats">
+                            <div class="stat">
+                                <strong>65+</strong>
+                                <span>Financial Firms</span>
+                            </div>
+                            <div class="stat">
+                                <strong>90%</strong>
+                                <span>Career Advancement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field-card environmental">
+                    <div class="field-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>Environmental Studies</h3>
+                        <div class="field-specialties">
+                            <span class="specialty-item">Sustainability Reporting</span>
+                            <span class="specialty-item">Waste Management</span>
+                            <span class="specialty-item">Climate Impact Assessment</span>
+                        </div>
+                        <p>Lead environmental sustainability initiatives and waste management projects that create lasting positive impact.</p>
+                        <div class="field-stats">
+                            <div class="stat">
+                                <strong>40+</strong>
+                                <span>Environmental Orgs</span>
+                            </div>
+                            <div class="stat">
+                                <strong>100%</strong>
+                                <span>Impact Projects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field-card social">
+                    <div class="field-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>Social Sciences</h3>
+                        <div class="field-specialties">
+                            <span class="specialty-item">Community Surveys</span>
+                            <span class="specialty-item">Policy Development</span>
+                            <span class="specialty-item">Social Impact Research</span>
+                        </div>
+                        <p>Engage in meaningful community research and policy development that shapes social programs and government initiatives.</p>
+                        <div class="field-stats">
+                            <div class="stat">
+                                <strong>30+</strong>
+                                <span>NGO Partners</span>
+                            </div>
+                            <div class="stat">
+                                <strong>98%</strong>
+                                <span>Social Impact</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Workflow Overview -->
+    <section class="platform-overview" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Complete Internship Lifecycle Management</h2>
+                <p class="section-subtitle">From application to completion, our platform manages every step with precision and compliance</p>
+            </div>
+            
+            <div class="workflow-tabs">
+                <button class="tab-btn active" data-tab="students">For Students</button>
+                <button class="tab-btn" data-tab="companies">For Companies</button>
+                <button class="tab-btn" data-tab="universities">For Universities</button>
+            </div>
+            
+            <div class="workflow-content">
+                <!-- Student Workflow -->
+                <div class="tab-content active" id="students-tab">
+                    <div class="workflow-steps">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Profile Creation & Verification</h3>
+                                <p>Complete academic profile with document verification and skill assessment</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Academic History</span>
+                                    <span class="feature-tag">Skills Assessment</span>
+                                    <span class="feature-tag">Document Upload</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Smart Opportunity Matching</h3>
+                                <p>AI-powered matching based on your skills, interests, and career goals</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">AI Matching</span>
+                                    <span class="feature-tag">Filter by Industry</span>
+                                    <span class="feature-tag">Saved Searches</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Application & Interview Process</h3>
+                                <p>Streamlined application with automated scheduling and progress tracking</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">One-Click Apply</span>
+                                    <span class="feature-tag">Interview Scheduling</span>
+                                    <span class="feature-tag">Real-time Updates</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Placement & Performance Tracking</h3>
+                                <p>Digital contract signing, onboarding, and continuous performance monitoring</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Digital Contracts</span>
+                                    <span class="feature-tag">Performance Metrics</span>
+                                    <span class="feature-tag">Feedback System</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Company Workflow -->
+                <div class="tab-content" id="companies-tab">
+                    <div class="workflow-steps">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Opportunity Posting</h3>
+                                <p>Create detailed internship opportunities with learning objectives and requirements</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Job Templates</span>
+                                    <span class="feature-tag">Skill Requirements</span>
+                                    <span class="feature-tag">Auto-Publishing</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Candidate Review & Selection</h3>
+                                <p>Advanced filtering, interview scheduling, and collaborative decision making</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Advanced Filters</span>
+                                    <span class="feature-tag">Team Collaboration</span>
+                                    <span class="feature-tag">Interview Tools</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Intern Management</h3>
+                                <p>Onboarding workflows, task assignment, and performance evaluation tools</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Onboarding Plans</span>
+                                    <span class="feature-tag">Task Management</span>
+                                    <span class="feature-tag">Evaluation Forms</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Reporting & Analytics</h3>
+                                <p>Comprehensive dashboards with compliance reporting and performance insights</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Custom Dashboards</span>
+                                    <span class="feature-tag">Compliance Reports</span>
+                                    <span class="feature-tag">ROI Analytics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- University Workflow -->
+                <div class="tab-content" id="universities-tab">
+                    <div class="workflow-steps">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Student Portfolio Management</h3>
+                                <p>Oversee student applications, approve placements, and track academic progress</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Student Oversight</span>
+                                    <span class="feature-tag">Approval Workflows</span>
+                                    <span class="feature-tag">Academic Tracking</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Company Partnerships</h3>
+                                <p>Build and manage relationships with industry partners and host organizations</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Partner Database</span>
+                                    <span class="feature-tag">MOUs Management</span>
+                                    <span class="feature-tag">Quality Assurance</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Academic Integration</h3>
+                                <p>Link internships to curriculum, manage ECTS credits, and assess learning outcomes</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Curriculum Links</span>
+                                    <span class="feature-tag">ECTS Management</span>
+                                    <span class="feature-tag">Learning Assessment</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Program Analytics</h3>
+                                <p>Monitor program effectiveness, student outcomes, and institutional compliance</p>
+                                <div class="step-features">
+                                    <span class="feature-tag">Outcome Tracking</span>
+                                    <span class="feature-tag">Program Metrics</span>
+                                    <span class="feature-tag">Compliance Reports</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Trust & Safety Section -->
+    <section class="trust-safety" id="trust-safety">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Your Safety & Success is Our Priority</h2>
+                <p class="section-subtitle">We've built comprehensive safeguards and support systems to ensure your journey is secure, successful, and transformative</p>
+            </div>
+            
+            <div class="trust-pillars">
+                <div class="pillar-item">
+                    <div class="pillar-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>Security & Privacy</h3>
+                    <ul class="pillar-features">
+                        <li>✓ Bank-level encryption for all data</li>
+                        <li>✓ GDPR & SOC 2 compliant</li>
+                        <li>✓ 24/7 security monitoring</li>
+                        <li>✓ Zero data sharing with third parties</li>
+                    </ul>
+                </div>
+                
+                <div class="pillar-item">
+                    <div class="pillar-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Verified Partners Only</h3>
+                    <ul class="pillar-features">
+                        <li>✓ Rigorous company background checks</li>
+                        <li>✓ On-site workplace verification</li>
+                        <li>✓ Continuous quality monitoring</li>
+                        <li>✓ Legal compliance verification</li>
+                    </ul>
+                </div>
+                
+                <div class="pillar-item">
+                    <div class="pillar-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support Network</h3>
+                    <ul class="pillar-features">
+                        <li>✓ Local support coordinators</li>
+                        <li>✓ Emergency contact system</li>
+                        <li>✓ Mental health resources</li>
+                        <li>✓ Cultural integration support</li>
+                    </ul>
+                </div>
+                
+                <div class="pillar-item">
+                    <div class="pillar-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Guaranteed Outcomes</h3>
+                    <ul class="pillar-features">
+                        <li>✓ 30-day money-back guarantee</li>
+                        <li>✓ Placement guarantee or full refund</li>
+                        <li>✓ Skills certification included</li>
+                        <li>✓ Career coaching for 12 months</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Real-time Trust Indicators -->
+            <div class="live-trust-indicators">
+                <div class="live-indicator">
+                    <div class="indicator-icon pulse">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="indicator-content">
+                        <span class="indicator-text">Last placement: 2 hours ago</span>
+                        <span class="indicator-detail">Maria J. → Microsoft Seattle</span>
+                    </div>
+                </div>
+                
+                <div class="live-indicator">
+                    <div class="indicator-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="indicator-content">
+                        <span class="indicator-text">47 students applying this week</span>
+                        <span class="indicator-detail">Join the next cohort</span>
+                    </div>
+                </div>
+                
+                <div class="live-indicator">
+                    <div class="indicator-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="indicator-content">
+                        <span class="indicator-text">4.9/5 rating this month</span>
+                        <span class="indicator-detail">Based on 156 reviews</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Benefits & Trust Building -->
+    <section class="anxiety-address">
+        <div class="container">
+            <h2 class="section-title">Built for Ugandan Institutions, Globally Connected</h2>
+            <p class="section-subtitle">Addressing every concern with comprehensive solutions and local expertise</p>
+            
+            <div class="anxiety-grid">
+                <div class="anxiety-card">
+                    <div class="anxiety-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Data Security & Compliance</h3>
+                    <p class="anxiety-problem">"Is our data safe and compliant?"</p>
+                    <p class="anxiety-solution">Full compliance with Uganda's Data Protection Act 2019. End-to-end encryption, audit trails, and secure document management with digital signatures.</p>
+                </div>
+                
+                <div class="anxiety-card">
+                    <div class="anxiety-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>System Integration</h3>
+                    <p class="anxiety-problem">"Will this work with our existing systems?"</p>
+                    <p class="anxiety-solution">Built on Odoo with modular architecture. Seamless integration with existing HR, academic, and document management systems. API-first design.</p>
+                </div>
+                
+                <div class="anxiety-card">
+                    <div class="anxiety-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>User Management & Training</h3>
+                    <p class="anxiety-problem">"How do we manage multiple user types?"</p>
+                    <p class="anxiety-solution">Role-based access control, automated workflows, comprehensive training, and 24/7 technical support. User-friendly interfaces for all stakeholders.</p>
+                </div>
+                
+                <div class="anxiety-card">
+                    <div class="anxiety-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>ROI & Performance Tracking</h3>
+                    <p class="anxiety-problem">"How do we measure success?"</p>
+                    <p class="anxiety-solution">Advanced analytics dashboard, placement success rates, student satisfaction metrics, and compliance reporting. Real-time insights for continuous improvement.</p>
+                </div>
+                
+                <div class="anxiety-card">
+                    <div class="anxiety-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Academic Standards</h3>
+                    <p class="anxiety-problem">"Will this meet our academic requirements?"</p>
+                    <p class="anxiety-solution">ECTS credit management, learning objective tracking, academic supervisor integration, and comprehensive evaluation frameworks aligned with Ugandan standards.</p>
+                </div>
+                
+                <div class="anxiety-card">
+                    <div class="anxiety-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Industry Partnerships</h3>
+                    <p class="anxiety-problem">"How do we build quality partnerships?"</p>
+                    <p class="anxiety-solution">Partner verification system, quality assurance protocols, automated MOU management, and continuous partner feedback loops for sustained relationships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Low-Friction Application Preview -->
+    <section class="application-preview" id="application">
+        <div class="container">
+            <h2 class="section-title">Start Your Application in Under 3 Minutes</h2>
+            <p class="section-subtitle">No essays, no lengthy forms. Just a simple conversation about your goals.</p>
+            
+            <div class="application-demo">
+                <div class="demo-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Your Interests</h4>
+                            <p>What field excites you most?</p>
+                        </div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Dream Destination</h4>
+                            <p>Where do you want to grow?</p>
+                        </div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Get Matched</h4>
+                            <p>We find your perfect opportunity</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-form">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 33%"></div>
+                        <span class="progress-text">Step 1 of 3</span>
+                    </div>
+                    
+                    <div class="form-content">
+                        <h3>What type of role interests you most?</h3>
+                        <div class="option-grid">
+                            <button class="option-card" data-option="tech">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>Technology</span>
+                            </button>
+                            <button class="option-card" data-option="business">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Business</span>
+                            </button>
+                            <button class="option-card" data-option="marketing">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Marketing</span>
+                            </button>
+                            <button class="option-card" data-option="design">
+                                <i class="fas fa-palette"></i>
+                                <span>Design</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary demo-next" onclick="openFullApplication()">
+                        Continue Application
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Success Stories - Emotional Connection -->
+    <section class="success-stories" id="success-stories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Real Stories, Real Transformations</h2>
+                <p class="section-subtitle">See how internships transformed careers and lives - verified success stories from real students</p>
+                
+                <!-- Trust Badge for Stories -->
+                <div class="stories-verification">
+                    <div class="verification-badge">
+                        <i class="fas fa-shield-check"></i>
+                        <span>All stories verified • Real outcomes • No actors</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stories-grid">
+                <!-- Featured Success Story -->
+                <div class="story-card featured">
+                    <div class="story-image">
+                        <img src="src/assets/story-1.jpg" alt="Maria Rodriguez">
+                        <div class="story-outcome">
+                            <span class="outcome-tag">Hired at Microsoft</span>
+                        </div>
+                        <div class="verification-mark">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-label">Verified Review</span>
+                        </div>
+                        <h3>From Nervous Student to Microsoft Engineer</h3>
+                        <p class="story-quote">"I was terrified to leave my comfort zone. Three months later, I had a job offer at one of the world's biggest tech companies. The mentorship and real-world experience completely transformed my confidence and skills."</p>
+                        <div class="story-details">
+                            <div class="story-author">
+                                <span class="author-name">Maria Rodriguez</span>
+                                <span class="author-location">Mexico City → Seattle</span>
+                                <span class="author-timeframe">6 months ago</span>
+                            </div>
+                            <div class="story-metrics">
+                                <div class="metric">
+                                    <span class="metric-label">Salary Increase</span>
+                                    <span class="metric-value">250%</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Time to Hire</span>
+                                    <span class="metric-value">2 weeks</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Before/After Comparison -->
+                        <div class="transformation">
+                            <div class="before-after">
+                                <div class="before">
+                                    <span class="label">Before</span>
+                                    <span class="value">Junior Dev, $35K</span>
+                                </div>
+                                <div class="arrow">→</div>
+                                <div class="after">
+                                    <span class="label">After</span>
+                                    <span class="value">SDE II, $125K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Success Stories -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="src/assets/story-2.jpg" alt="James Kim">
+                        <div class="verification-mark">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-rating">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <h3>Built a Global Network That Changed Everything</h3>
+                        <p class="story-quote">"The connections I made during my internship led to opportunities I'm still benefiting from 2 years later. My mentor is now my manager!"</p>
+                        <div class="story-author">
+                            <span class="author-name">James Kim</span>
+                            <span class="author-location">Seoul → London</span>
+                        </div>
+                        <div class="story-outcome-small">
+                            <span class="outcome-small">Now Team Lead at Deloitte</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="src/assets/story-3.jpg" alt="Priya Sharma">
+                        <div class="verification-mark">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-rating">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <h3>Overcame Imposter Syndrome & Thrived</h3>
+                        <p class="story-quote">"The mentorship and real-world experience gave me confidence I never knew I had. I went from doubting myself to leading projects."</p>
+                        <div class="story-author">
+                            <span class="author-name">Priya Sharma</span>
+                            <span class="author-location">Mumbai → Toronto</span>
+                        </div>
+                        <div class="story-outcome-small">
+                            <span class="outcome-small">Product Manager at Shopify</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video Testimonial -->
+                <div class="story-card video-testimonial">
+                    <div class="video-container">
+                        <div class="video-thumbnail">
+                            <img src="src/assets/video-thumb-1.jpg" alt="Alex Chen Video">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h3>Watch Alex's Full Journey</h3>
+                        <p class="story-quote">"Hear how a 3-month internship led to my dream job at Amazon"</p>
+                        <div class="video-stats">
+                            <span class="video-duration">3:24</span>
+                            <span class="video-views">2.1K views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enhanced Success Metrics -->
+            <div class="success-metrics">
+                <div class="metrics-header">
+                    <h3>Verified Outcomes from Our Alumni</h3>
+                    <p>Based on 2,847 tracked placements over 5 years</p>
+                </div>
+                
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <span class="metric-number">85%</span>
+                        <span class="metric-text">Get job offers within 6 months</span>
+                        <span class="metric-detail">vs 23% industry average</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">300%</span>
+                        <span class="metric-text">Average salary increase</span>
+                        <span class="metric-detail">Median: $45K → $135K</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">95%</span>
+                        <span class="metric-text">Would recommend to friends</span>
+                        <span class="metric-detail">4.9/5 average rating</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">92%</span>
+                        <span class="metric-text">Still at their company after 2 years</span>
+                        <span class="metric-detail">Exceptional retention rate</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Alumni Network Showcase -->
+            <div class="alumni-network">
+                <h3>Join Our Alumni at Top Companies</h3>
+                <div class="company-grid">
+                    <div class="company-item">
+                        <img src="src/assets/company-google.png" alt="Google">
+                        <span class="alumni-count">127 alumni</span>
+                    </div>
+                    <div class="company-item">
+                        <img src="src/assets/company-microsoft.png" alt="Microsoft">
+                        <span class="alumni-count">89 alumni</span>
+                    </div>
+                    <div class="company-item">
+                        <img src="src/assets/company-amazon.png" alt="Amazon">
+                        <span class="alumni-count">156 alumni</span>
+                    </div>
+                    <div class="company-item">
+                        <img src="src/assets/company-apple.png" alt="Apple">
+                        <span class="alumni-count">67 alumni</span>
+                    </div>
+                    <div class="company-item">
+                        <img src="src/assets/company-meta.png" alt="Meta">
+                        <span class="alumni-count">94 alumni</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Radical Transparency - Pricing -->
+    <section class="pricing-transparency" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Complete Cost Transparency</h2>
+            <p class="section-subtitle">No hidden fees. No surprises. Here's exactly what you'll invest and what you'll get back.</p>
+            
+            <div class="cost-breakdown">
+                <div class="breakdown-card">
+                    <h3>Program Investment</h3>
+                    <div class="cost-item">
+                        <span class="cost-label">Program Fee</span>
+                        <span class="cost-amount">$2,990</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Visa Support</span>
+                        <span class="cost-amount">$290</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Housing Assistance</span>
+                        <span class="cost-amount">$190</span>
+                    </div>
+                    <div class="cost-total">
+                        <span class="total-label">Total Program Cost</span>
+                        <span class="total-amount">$3,470</span>
+                    </div>
+                </div>
+                
+                <div class="breakdown-card">
+                    <h3>Additional Estimated Costs</h3>
+                    <div class="cost-item">
+                        <span class="cost-label">Round-trip Flight</span>
+                        <span class="cost-amount">$800-1,500</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Monthly Living (3 months)</span>
+                        <span class="cost-amount">$2,100-3,600</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Personal Expenses</span>
+                        <span class="cost-amount">$600-1,200</span>
+                    </div>
+                    <div class="cost-total estimated">
+                        <span class="total-label">Estimated Additional</span>
+                        <span class="total-amount">$3,500-6,300</span>
+                    </div>
+                </div>
+                
+                <div class="breakdown-card roi">
+                    <h3>Your Return on Investment</h3>
+                    <div class="roi-item">
+                        <span class="roi-label">Average Salary Increase</span>
+                        <span class="roi-amount">+$15,000/year</span>
+                    </div>
+                    <div class="roi-item">
+                        <span class="roi-label">Lifetime Career Impact</span>
+                        <span class="roi-amount">+$200,000</span>
+                    </div>
+                    <div class="roi-highlight">
+                        <span class="roi-text">Program pays for itself in 4 months</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-guarantees">
+                <div class="guarantee-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>30-day money-back guarantee</span>
+                </div>
+                <div class="guarantee-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Flexible payment plans available</span>
+                </div>
+                <div class="guarantee-item">
+                    <i class="fas fa-handshake"></i>
+                    <span>If we can't place you, full refund</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Social Proof & External Validation -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Trusted by Leading Universities & Organizations</h2>
+                <p class="section-subtitle">Recognized by industry leaders and educational institutions worldwide</p>
+            </div>
+            
+            <!-- Awards & Recognition -->
+            <div class="awards-section">
+                <h3>Awards & Recognition</h3>
+                <div class="awards-grid">
+                    <div class="award-item">
+                        <img src="src/assets/award-1.png" alt="Best Education Platform 2024">
+                        <span class="award-text">Best Education Platform 2024</span>
+                    </div>
+                    <div class="award-item">
+                        <img src="src/assets/award-2.png" alt="Top Innovation Award">
+                        <span class="award-text">Innovation in Career Development</span>
+                    </div>
+                    <div class="award-item">
+                        <img src="src/assets/award-3.png" alt="Student Choice Award">
+                        <span class="award-text">Student Choice Award 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- University Partners -->
+            <div class="university-partners">
+                <h3>Official University Partners</h3>
+                <div class="university-logos">
+                    <div class="university-item">
+                        <img src="src/assets/university-1.png" alt="Harvard University">
+                        <span class="partnership-details">200+ students placed</span>
+                    </div>
+                    <div class="university-item">
+                        <img src="src/assets/university-2.png" alt="Stanford University">
+                        <span class="partnership-details">150+ students placed</span>
+                    </div>
+                    <div class="university-item">
+                        <img src="src/assets/university-3.png" alt="MIT">
+                        <span class="partnership-details">180+ students placed</span>
+                    </div>
+                    <div class="university-item">
+                        <img src="src/assets/university-4.png" alt="Oxford University">
+                        <span class="partnership-details">120+ students placed</span>
+                    </div>
+                    <div class="university-item">
+                        <img src="src/assets/university-5.png" alt="Cambridge University">
+                        <span class="partnership-details">95+ students placed</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- External Reviews & Ratings -->
+            <div class="external-reviews">
+                <h3>What Others Say About Us</h3>
+                
+                <div class="review-platforms">
+                    <div class="review-source">
+                        <div class="platform-header">
+                            <img src="src/assets/platform-goabroad.png" alt="GoAbroad.com">
+                            <h4>GoAbroad.com Reviews</h4>
+                        </div>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">4.8/5 from 2,847 reviews</span>
+                        </div>
+                        <p class="platform-description">"Consistently rated as the top international internship platform"</p>
+                    </div>
+                    
+                    <div class="review-source">
+                        <div class="platform-header">
+                            <img src="src/assets/platform-trustpilot.png" alt="Trustpilot">
+                            <h4>Trustpilot Reviews</h4>
+                        </div>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">4.9/5 from 1,256 reviews</span>
+                        </div>
+                        <p class="platform-description">"Excellent service and life-changing experiences"</p>
+                    </div>
+                    
+                    <div class="review-source">
+                        <div class="platform-header">
+                            <img src="src/assets/platform-glassdoor.png" alt="Glassdoor">
+                            <h4>Glassdoor Reviews</h4>
+                        </div>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">4.7/5 from 892 reviews</span>
+                        </div>
+                        <p class="platform-description">"Outstanding support and genuine career impact"</p>
+                    </div>
+                </div>
+                
+                <div class="featured-reviews">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="stars">★★★★★</div>
+                            <span class="review-source-tag">Verified GoAbroad Review</span>
+                        </div>
+                        <p>"Best decision I ever made. The support was incredible and the experience transformed my career. The team went above and beyond to ensure I succeeded."</p>
+                        <div class="reviewer-info">
+                            <span class="reviewer">Alex Chen, Software Engineer</span>
+                            <span class="review-date">2 months ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="stars">★★★★★</div>
+                            <span class="review-source-tag">Verified Trustpilot Review</span>
+                        </div>
+                        <p>"Professional, reliable, and genuinely cares about student success. The placement process was smooth and the ongoing support exceptional."</p>
+                        <div class="reviewer-info">
+                            <span class="reviewer">Sarah Johnson, Marketing Manager</span>
+                            <span class="review-date">3 weeks ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="stars">★★★★★</div>
+                            <span class="review-source-tag">Verified Glassdoor Review</span>
+                        </div>
+                        <p>"They delivered exactly what they promised. My internship led directly to a full-time offer. Worth every penny!"</p>
+                        <div class="reviewer-info">
+                            <span class="reviewer">David Park, Data Analyst</span>
+                            <span class="review-date">1 month ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Press & Media Coverage -->
+            <div class="press-coverage">
+                <h3>Featured In</h3>
+                <div class="press-logos">
+                    <img src="src/assets/press-techcrunch.png" alt="TechCrunch">
+                    <img src="src/assets/press-forbes.png" alt="Forbes">
+                    <img src="src/assets/press-wsj.png" alt="Wall Street Journal">
+                    <img src="src/assets/press-bbc.png" alt="BBC">
+                    <img src="src/assets/press-reuters.png" alt="Reuters">
+                </div>
+            </div>
+            
+            <!-- Real-time Social Proof -->
+            <div class="live-social-proof">
+                <div class="live-activity">
+                    <div class="activity-item">
+                        <i class="fas fa-user-check"></i>
+                        <span>Sarah M. just got accepted at Amazon (2 min ago)</span>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-star"></i>
+                        <span>New 5-star review from James K. (15 min ago)</span>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>MIT partnership renewed for 2025 (1 hour ago)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Your Global Career Starts Today</h2>
+                <p>Join thousands of students who've transformed their futures. Start your application now - it takes just 3 minutes.</p>
+                
+                <div class="cta-urgency">
+                    <p><strong>Next cohort starts in 6 weeks</strong> • Limited spots available</p>
+                </div>
+                
+                <button class="btn-primary btn-large" onclick="openApplication()">
+                    Start Your Journey Now
+                    <i class="fas fa-rocket"></i>
+                </button>
+                
+                <div class="cta-assurance">
+                    <p>✓ No commitment required to start • ✓ Speak with our team first • ✓ 30-day guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AdmasAfroLink</h4>
+                    <p>Transforming careers through global internship experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="#">Technology Internships</a></li>
+                        <li><a href="#">Business Internships</a></li>
+                        <li><a href="#">Marketing Internships</a></li>
+                        <li><a href="#">Design Internships</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">24/7 Help Center</a></li>
+                        <li><a href="#">Visa Assistance</a></li>
+                        <li><a href="#">Housing Support</a></li>
+                        <li><a href="#">Emergency Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Partner Companies</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 AdmasAfroLink. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enhanced Low-Friction Application Modal -->
+    <div class="modal" id="application-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Start Your Global Career Journey</h2>
+                <p class="modal-subtitle">Takes just 3 minutes • No commitment required</p>
+                <button class="modal-close" onclick="closeApplication()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="application-form">
+                <!-- Enhanced Progress Indicator -->
+                <div class="progress-indicator">
+                    <div class="progress-steps">
+                        <div class="progress-step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-label">Interests</span>
+                            <span class="step-time">30 sec</span>
+                        </div>
+                        <div class="progress-step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-label">Goals</span>
+                            <span class="step-time">45 sec</span>
+                        </div>
+                        <div class="progress-step" data-step="3">
+                            <span class="step-number">3</span>
+                            <span class="step-label">Background</span>
+                            <span class="step-time">60 sec</span>
+                        </div>
+                        <div class="progress-step" data-step="4">
+                            <span class="step-number">4</span>
+                            <span class="step-label">Contact</span>
+                            <span class="step-time">30 sec</span>
+                        </div>
+                        <div class="progress-step" data-step="5">
+                            <span class="step-number">5</span>
+                            <span class="step-label">Match</span>
+                            <span class="step-time">5 sec</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar-modal">
+                        <div class="progress-fill-modal" style="width: 20%"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span class="current-step">Step 1 of 5</span>
+                        <span class="time-remaining">2 min remaining</span>
+                    </div>
+                </div>
+                
+                <!-- Step 1: Career Interests -->
+                <div class="form-step active" data-step="1">
+                    <div class="step-header">
+                        <h3>What type of role interests you most?</h3>
+                        <p class="step-description">We'll match you with companies and opportunities that align with your career goals.</p>
+                        <div class="help-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Tip: You can select multiple interests</span>
+                        </div>
+                    </div>
+                    
+                    <div class="interest-grid">
+                        <label class="interest-option">
+                            <input type="checkbox" name="career-fields" value="technology">
+                            <div class="option-content">
+                                <i class="fas fa-laptop-code"></i>
+                                <span class="option-title">Technology</span>
+                                <span class="option-desc">Software development, data analysis, cybersecurity</span>
+                                <span class="demand-indicator high">High Demand</span>
+                            </div>
+                        </label>
+                        
+                        <label class="interest-option">
+                            <input type="checkbox" name="career-fields" value="business">
+                            <div class="option-content">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="option-title">Business & Finance</span>
+                                <span class="option-desc">Consulting, banking, operations, strategy</span>
+                                <span class="demand-indicator medium">Growing</span>
+                            </div>
+                        </label>
+                        
+                        <label class="interest-option">
+                            <input type="checkbox" name="career-fields" value="marketing">
+                            <div class="option-content">
+                                <i class="fas fa-bullhorn"></i>
+                                <span class="option-title">Marketing & Sales</span>
+                                <span class="option-desc">Digital marketing, content creation, sales</span>
+                                <span class="demand-indicator high">High Demand</span>
+                            </div>
+                        </label>
+                        
+                        <label class="interest-option">
+                            <input type="checkbox" name="career-fields" value="design">
+                            <div class="option-content">
+                                <i class="fas fa-palette"></i>
+                                <span class="option-title">Design & Creative</span>
+                                <span class="option-desc">UX/UI design, graphic design, content</span>
+                                <span class="demand-indicator medium">Growing</span>
+                            </div>
+                        </label>
+                        
+                        <label class="interest-option">
+                            <input type="checkbox" name="career-fields" value="healthcare">
+                            <div class="option-content">
+                                <i class="fas fa-heartbeat"></i>
+                                <span class="option-title">Healthcare</span>
+                                <span class="option-desc">Medical research, health tech, biotech</span>
+                                <span class="demand-indicator high">High Demand</span>
+                            </div>
+                        </label>
+                        
+                        <label class="interest-option">
+                            <input type="checkbox" name="career-fields" value="engineering">
+                            <div class="option-content">
+                                <i class="fas fa-cogs"></i>
+                                <span class="option-title">Engineering</span>
+                                <span class="option-desc">Mechanical, civil, environmental</span>
+                                <span class="demand-indicator medium">Stable</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Goals & Motivation -->
+                <div class="form-step" data-step="2">
+                    <div class="step-header">
+                        <h3>What's your primary goal for this internship?</h3>
+                        <p class="step-description">Understanding your motivation helps us find the perfect match.</p>
+                    </div>
+                    
+                    <div class="goals-selection">
+                        <label class="goal-option">
+                            <input type="radio" name="primary-goal" value="career-change">
+                            <div class="goal-content">
+                                <div class="goal-icon">🚀</div>
+                                <h4>Launch My Career</h4>
+                                <p>Get my first job in a new field</p>
+                                <span class="success-rate">92% success rate</span>
+                            </div>
+                        </label>
+                        
+                        <label class="goal-option">
+                            <input type="radio" name="primary-goal" value="skill-building">
+                            <div class="goal-content">
+                                <div class="goal-icon">📈</div>
+                                <h4>Build Specific Skills</h4>
+                                <p>Gain hands-on experience in my field</p>
+                                <span class="success-rate">96% success rate</span>
+                            </div>
+                        </label>
+                        
+                        <label class="goal-option">
+                            <input type="radio" name="primary-goal" value="networking">
+                            <div class="goal-content">
+                                <div class="goal-icon">🌍</div>
+                                <h4>Global Network</h4>
+                                <p>Connect with international professionals</p>
+                                <span class="success-rate">89% success rate</span>
+                            </div>
+                        </label>
+                        
+                        <label class="goal-option">
+                            <input type="radio" name="primary-goal" value="salary-increase">
+                            <div class="goal-content">
+                                <div class="goal-icon">💰</div>
+                                <h4>Increase Earning Potential</h4>
+                                <p>Boost my salary and career prospects</p>
+                                <span class="success-rate">94% success rate</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Preferred Timeline -->
+                    <div class="timeline-selection">
+                        <h4>When would you like to start?</h4>
+                        <div class="timeline-options">
+                            <label class="timeline-option">
+                                <input type="radio" name="timeline" value="asap">
+                                <span>ASAP</span>
+                                <small>Next 4 weeks</small>
+                            </label>
+                            <label class="timeline-option">
+                                <input type="radio" name="timeline" value="1-3months">
+                                <span>1-3 Months</span>
+                                <small>Most popular</small>
+                            </label>
+                            <label class="timeline-option">
+                                <input type="radio" name="timeline" value="3-6months">
+                                <span>3-6 Months</span>
+                                <small>Plan ahead</small>
+                            </label>
+                            <label class="timeline-option">
+                                <input type="radio" name="timeline" value="flexible">
+                                <span>Flexible</span>
+                                <small>Best opportunities</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Background -->
+                <div class="form-step" data-step="3">
+                    <div class="step-header">
+                        <h3>Tell us about your background</h3>
+                        <p class="step-description">This helps us match you with the right level of opportunities.</p>
+                    </div>
+                    
+                    <div class="background-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="education-level">Education Level</label>
+                                <select id="education-level" name="education-level" required>
+                                    <option value="">Select your level</option>
+                                    <option value="high-school">High School</option>
+                                    <option value="some-college">Some College</option>
+                                    <option value="bachelor">Bachelor's Degree</option>
+                                    <option value="master">Master's Degree</option>
+                                    <option value="phd">PhD</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="experience-level">Work Experience</label>
+                                <select id="experience-level" name="experience-level" required>
+                                    <option value="">Select experience</option>
+                                    <option value="none">No experience</option>
+                                    <option value="0-1">Less than 1 year</option>
+                                    <option value="1-3">1-3 years</option>
+                                    <option value="3-5">3-5 years</option>
+                                    <option value="5+">5+ years</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="current-situation">Current Situation</label>
+                            <div class="situation-options">
+                                <label class="situation-option">
+                                    <input type="radio" name="current-situation" value="student">
+                                    <span>👨‍🎓 Student</span>
+                                </label>
+                                <label class="situation-option">
+                                    <input type="radio" name="current-situation" value="employed">
+                                    <span>💼 Employed</span>
+                                </label>
+                                <label class="situation-option">
+                                    <input type="radio" name="current-situation" value="job-seeking">
+                                    <span>🔍 Job Seeking</span>
+                                </label>
+                                <label class="situation-option">
+                                    <input type="radio" name="current-situation" value="career-break">
+                                    <span>⏸️ Career Break</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="skills">Key Skills <span class="optional">(Optional)</span></label>
+                            <input type="text" id="skills" name="skills" placeholder="e.g., Python, Project Management, Social Media Marketing">
+                            <small class="field-help">List 2-3 of your strongest skills</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 4: Contact Information -->
+                <div class="form-step" data-step="4">
+                    <div class="step-header">
+                        <h3>How can we reach you?</h3>
+                        <p class="step-description">We'll send you personalized matches and next steps.</p>
+                        <div class="privacy-note">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Your information is 100% secure and never shared</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" name="first-name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" name="last-name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                            <small class="field-help">We'll send your matches here</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="optional">(Optional)</span></label>
+                            <input type="tel" id="phone" name="phone">
+                            <small class="field-help">For urgent opportunities only</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Current Location</label>
+                            <input type="text" id="location" name="location" placeholder="City, Country" required>
+                        </div>
+                        
+                        <div class="consent-section">
+                            <label class="consent-checkbox">
+                                <input type="checkbox" name="marketing-consent" value="yes">
+                                <span class="checkmark"></span>
+                                <span class="consent-text">
+                                    I'd like to receive updates about new opportunities and career tips
+                                    <small>(You can unsubscribe anytime)</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 5: Matching Results -->
+                <div class="form-step" data-step="5">
+                    <div class="step-header">
+                        <h3>🎉 We found your perfect matches!</h3>
+                        <p class="step-description">Based on your preferences, here are the top opportunities for you.</p>
+                    </div>
+                    
+                    <div class="matching-results">
+                        <div class="match-item featured">
+                            <div class="match-badge">Perfect Match</div>
+                            <div class="match-content">
+                                <div class="company-info">
+                                    <img src="src/assets/company-google.png" alt="Google" class="company-logo">
+                                    <div class="company-details">
+                                        <h4>Software Engineering Intern</h4>
+                                        <p class="company-name">Google • Mountain View, CA</p>
+                                        <div class="match-stats">
+                                            <span class="match-score">98% Match</span>
+                                            <span class="salary-range">$8,000/month</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="match-highlights">
+                                    <span class="highlight">Remote-friendly</span>
+                                    <span class="highlight">Mentorship program</span>
+                                    <span class="highlight">Full-time offer potential</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="match-item">
+                            <div class="match-content">
+                                <div class="company-info">
+                                    <img src="src/assets/company-microsoft.png" alt="Microsoft" class="company-logo">
+                                    <div class="company-details">
+                                        <h4>Product Management Intern</h4>
+                                        <p class="company-name">Microsoft • Seattle, WA</p>
+                                        <div class="match-stats">
+                                            <span class="match-score">94% Match</span>
+                                            <span class="salary-range">$7,500/month</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="match-highlights">
+                                    <span class="highlight">Housing assistance</span>
+                                    <span class="highlight">International friendly</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="match-item">
+                            <div class="match-content">
+                                <div class="company-info">
+                                    <img src="src/assets/company-amazon.png" alt="Amazon" class="company-logo">
+                                    <div class="company-details">
+                                        <h4>Data Science Intern</h4>
+                                        <p class="company-name">Amazon • Various Locations</p>
+                                        <div class="match-stats">
+                                            <span class="match-score">91% Match</span>
+                                            <span class="salary-range">$7,000/month</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="match-highlights">
+                                    <span class="highlight">Fast track hiring</span>
+                                    <span class="highlight">Global teams</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="next-steps">
+                        <h4>What happens next?</h4>
+                        <div class="next-steps-list">
+                            <div class="next-step">
+                                <span class="step-num">1</span>
+                                <span>We'll email you the full details within 24 hours</span>
+                            </div>
+                            <div class="next-step">
+                                <span class="step-num">2</span>
+                                <span>Schedule a 15-minute call with your career advisor</span>
+                            </div>
+                            <div class="next-step">
+                                <span class="step-num">3</span>
+                                <span>Apply to your top 3 matches with our support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Navigation -->
+                <div class="form-navigation">
+                    <button class="btn-secondary prev-btn" onclick="previousStep()" style="display: none;">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    
+                    <div class="nav-center">
+                        <button class="btn-ghost save-progress" onclick="saveProgress()" style="display: none;">
+                            <i class="fas fa-bookmark"></i>
+                            Save & Continue Later
+                        </button>
+                    </div>
+                    
+                    <button class="btn-primary next-btn" onclick="nextStep()">
+                        <span class="btn-text">Continue</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Form Assistance -->
+                <div class="form-assistance">
+                    <button class="help-btn" onclick="toggleHelp()">
+                        <i class="fas fa-question-circle"></i>
+                        Need help?
+                    </button>
+                    <span class="form-time">About <span id="time-remaining">2 minutes</span> remaining</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chat-widget">
+        <div class="chat-toggle" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+            <span class="chat-notification">We're here to help!</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/services/api.js"></script>
+    <script src="analytics.js"></script>
+    <script src="src/components/navigation-enhanced.js"></script>
+    <script src="src/components/application-enhanced.js"></script>
+    <script src="src/components/stories.js"></script>
+    <script src="pricing.js"></script>
+    <script src="src/components/analytics.js"></script>
+    <script src="src/components/chat.js"></script>
+</body>
+</html>

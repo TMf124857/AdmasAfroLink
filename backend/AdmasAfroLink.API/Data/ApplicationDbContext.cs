@@ -36,8 +36,8 @@ namespace AdmasAfroLink.API.Data
                 entity.Property(e => e.Bio).HasMaxLength(500);
                 entity.Property(e => e.Location).HasMaxLength(200);
                 entity.Property(e => e.Country).HasMaxLength(200);
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
-                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
 
                 entity.HasIndex(e => e.Email).IsUnique();
                 entity.HasIndex(e => e.Country);
@@ -60,7 +60,7 @@ namespace AdmasAfroLink.API.Data
                     .HasForeignKey(us => us.SkillId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
             });
 
             // Configure UserInterest composite key and relationships
@@ -78,7 +78,7 @@ namespace AdmasAfroLink.API.Data
                     .HasForeignKey(ui => ui.InterestId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
             });
 
             // Configure Opportunity entity
@@ -90,8 +90,8 @@ namespace AdmasAfroLink.API.Data
                 entity.Property(e => e.Currency).HasMaxLength(10).HasDefaultValue("USD");
                 entity.Property(e => e.BudgetMin).HasPrecision(18, 2);
                 entity.Property(e => e.BudgetMax).HasPrecision(18, 2);
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
-                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
 
                 entity.HasOne(o => o.User)
                     .WithMany(u => u.Opportunities)
@@ -121,7 +121,7 @@ namespace AdmasAfroLink.API.Data
                     .HasForeignKey(ot => ot.TagId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
             });
 
             // Configure OpportunitySkill composite key and relationships
@@ -139,7 +139,7 @@ namespace AdmasAfroLink.API.Data
                     .HasForeignKey(os => os.SkillId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
             });
 
             // Configure OpportunityApplication entity
@@ -147,8 +147,8 @@ namespace AdmasAfroLink.API.Data
             {
                 entity.Property(e => e.CoverLetter).IsRequired();
                 entity.Property(e => e.ProposedRate).HasPrecision(18, 2);
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
-                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
 
                 entity.HasOne(oa => oa.Opportunity)
                     .WithMany(o => o.Applications)
@@ -168,7 +168,7 @@ namespace AdmasAfroLink.API.Data
             builder.Entity<Message>(entity =>
             {
                 entity.Property(e => e.Content).IsRequired();
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
 
                 entity.HasOne(m => m.Sender)
                     .WithMany(u => u.SentMessages)
@@ -189,8 +189,8 @@ namespace AdmasAfroLink.API.Data
             // Configure UserConnection entity
             builder.Entity<UserConnection>(entity =>
             {
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
-                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
 
                 entity.HasOne(uc => uc.Requester)
                     .WithMany(u => u.Connections)
@@ -211,7 +211,7 @@ namespace AdmasAfroLink.API.Data
             {
                 entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
                 entity.Property(e => e.Content).IsRequired();
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
 
                 entity.HasOne(n => n.User)
                     .WithMany()
@@ -229,7 +229,7 @@ namespace AdmasAfroLink.API.Data
             {
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Category).HasMaxLength(100);
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
 
                 entity.HasIndex(e => e.Name).IsUnique();
                 entity.HasIndex(e => e.Category);
@@ -241,7 +241,7 @@ namespace AdmasAfroLink.API.Data
             {
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Category).HasMaxLength(100);
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
 
                 entity.HasIndex(e => e.Name).IsUnique();
                 entity.HasIndex(e => e.Category);
@@ -254,7 +254,7 @@ namespace AdmasAfroLink.API.Data
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.Category).HasMaxLength(100);
                 entity.Property(e => e.ColorCode).HasMaxLength(20).HasDefaultValue("#007bff");
-                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
 
                 entity.HasIndex(e => e.Name).IsUnique();
                 entity.HasIndex(e => e.Category);
