@@ -23,6 +23,10 @@ namespace AdmasAfroLink.API.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<UserConnection> UserConnections { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<InternshipSwipe> InternshipSwipes { get; set; }
+        public DbSet<InternshipMatch> InternshipMatches { get; set; }
+        public DbSet<UserReport> UserReports { get; set; }
+        public DbSet<UserBlock> UserBlocks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -38,11 +42,18 @@ namespace AdmasAfroLink.API.Data
                 entity.Property(e => e.Country).HasMaxLength(200);
                 entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
                 entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
+                entity.Property(e => e.RoleType).HasDefaultValue(UserRoleType.Student);
+                entity.Property(e => e.EmployerApprovalStatus).HasDefaultValue(EmployerApprovalStatus.NotRequired);
+                entity.Property(e => e.School).HasMaxLength(150);
+                entity.Property(e => e.Major).HasMaxLength(150);
+                entity.Property(e => e.EmployerApprovalNotes).HasMaxLength(500);
 
                 entity.HasIndex(e => e.Email).IsUnique();
                 entity.HasIndex(e => e.Country);
                 entity.HasIndex(e => e.IsActive);
                 entity.HasIndex(e => e.CreatedAt);
+                entity.HasIndex(e => e.RoleType);
+                entity.HasIndex(e => e.EmployerApprovalStatus);
             });
 
             // Configure UserSkill composite key and relationships
@@ -222,6 +233,52 @@ namespace AdmasAfroLink.API.Data
                 entity.HasIndex(e => e.IsRead);
                 entity.HasIndex(e => e.Type);
                 entity.HasIndex(e => e.CreatedAt);
+            });
+
+            builder.Entity<InternshipSwipe>(entity =>
+            {
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
+
+                entity.HasOne(s => s.Opportunity)
+                    .WithMany()
+                    .HasForeignKey(s => s.OpportunityId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasIndex(e => new { e.OpportunityId, e.CandidateUserId, e.EmployerUserId }).IsUnique();
+                entity.HasIndex(e => e.EmployerUserId);
+                entity.HasIndex(e => e.CandidateUserId);
+            });
+
+            builder.Entity<InternshipMatch>(entity =>
+            {
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
+
+                entity.HasOne(m => m.Opportunity)
+                    .WithMany()
+                    .HasForeignKey(m => m.OpportunityId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasIndex(e => new { e.OpportunityId, e.StudentUserId, e.EmployerUserId }).IsUnique();
+                entity.HasIndex(e => e.Status);
+            });
+
+            builder.Entity<UserReport>(entity =>
+            {
+                entity.Property(e => e.Category).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.Reason).HasMaxLength(1000).IsRequired();
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
+                entity.HasIndex(e => e.ReportedUserId);
+                entity.HasIndex(e => e.IsResolved);
+            });
+
+            builder.Entity<UserBlock>(entity =>
+            {
+                entity.Property(e => e.Reason).HasMaxLength(250);
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
+                entity.HasIndex(e => new { e.UserId, e.BlockedUserId }).IsUnique();
+                entity.HasIndex(e => e.BlockedUserId);
             });
 
             // Configure Skill entity

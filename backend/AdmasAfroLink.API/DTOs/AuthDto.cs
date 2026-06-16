@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using AdmasAfroLink.API.Models;
 
 namespace AdmasAfroLink.API.DTOs
 {
@@ -29,6 +30,18 @@ namespace AdmasAfroLink.API.DTOs
 
         [MaxLength(200)]
         public string Country { get; set; } = string.Empty;
+
+        [Required]
+        public UserRoleType RoleType { get; set; } = UserRoleType.Student;
+
+        [MaxLength(150)]
+        public string School { get; set; } = string.Empty;
+
+        [MaxLength(150)]
+        public string Major { get; set; } = string.Empty;
+
+        [Range(2000, 2100)]
+        public int? GraduationYear { get; set; }
     }
 
     public class UserLoginDto
@@ -80,6 +93,11 @@ namespace AdmasAfroLink.API.DTOs
         public string LinkedIn { get; set; } = string.Empty;
         public string Twitter { get; set; } = string.Empty;
         public string Instagram { get; set; } = string.Empty;
+        public string School { get; set; } = string.Empty;
+        public string Major { get; set; } = string.Empty;
+        public int? GraduationYear { get; set; }
+        public UserRoleType RoleType { get; set; }
+        public EmployerApprovalStatus EmployerApprovalStatus { get; set; }
         public bool IsVerified { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }

@@ -242,6 +242,8 @@ namespace AdmasAfroLink.API.Controllers
             var firstName = User.FindFirst(ClaimTypes.GivenName)?.Value;
             var lastName = User.FindFirst(ClaimTypes.Surname)?.Value;
             var isVerified = User.FindFirst("IsVerified")?.Value;
+            var roleType = User.FindFirst("RoleType")?.Value;
+            var employerApprovalStatus = User.FindFirst("EmployerApprovalStatus")?.Value;
             var roles = User.FindAll(ClaimTypes.Role).Select(c => c.Value).ToList();
 
             return Ok(new
@@ -251,6 +253,8 @@ namespace AdmasAfroLink.API.Controllers
                 FirstName = firstName,
                 LastName = lastName,
                 IsVerified = bool.Parse(isVerified ?? "false"),
+                RoleType = roleType,
+                EmployerApprovalStatus = employerApprovalStatus,
                 Roles = roles
             });
         }
