@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\Desktop\\AdmasAfroLink\\AdmasAfroLink\\backend\\AdmasAfroLink.API\\AdmasAfroLink.API.csproj": {}
+    "/home/runner/work/AdmasAfroLink/AdmasAfroLink/backend/AdmasAfroLink.API/AdmasAfroLink.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\Desktop\\AdmasAfroLink\\AdmasAfroLink\\backend\\AdmasAfroLink.API\\AdmasAfroLink.API.csproj": {
+    "/home/runner/work/AdmasAfroLink/AdmasAfroLink/backend/AdmasAfroLink.API/AdmasAfroLink.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\AdmasAfroLink\\AdmasAfroLink\\backend\\AdmasAfroLink.API\\AdmasAfroLink.API.csproj",
+        "projectUniqueName": "/home/runner/work/AdmasAfroLink/AdmasAfroLink/backend/AdmasAfroLink.API/AdmasAfroLink.API.csproj",
         "projectName": "AdmasAfroLink.API",
-        "projectPath": "C:\\Users\\Lenovo\\Desktop\\AdmasAfroLink\\AdmasAfroLink\\backend\\AdmasAfroLink.API\\AdmasAfroLink.API.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\Desktop\\AdmasAfroLink\\AdmasAfroLink\\backend\\AdmasAfroLink.API\\obj\\",
+        "projectPath": "/home/runner/work/AdmasAfroLink/AdmasAfroLink/backend/AdmasAfroLink.API/AdmasAfroLink.API.csproj",
+        "packagesPath": "/home/runner/.nuget/packages/",
+        "outputPath": "/home/runner/work/AdmasAfroLink/AdmasAfroLink/backend/AdmasAfroLink.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/runner/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -24,6 +24,7 @@
         },
         "frameworks": {
           "net9.0": {
+            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {}
           }
@@ -38,10 +39,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net9.0": {
+          "framework": "net9.0",
           "targetAlias": "net9.0",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
@@ -110,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
