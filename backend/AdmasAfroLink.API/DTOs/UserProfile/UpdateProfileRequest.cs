@@ -21,6 +21,15 @@ namespace AdmasAfroLink.API.DTOs.UserProfile
         [StringLength(100)]
         public string? JobTitle { get; set; }
 
+        [StringLength(150)]
+        public string? School { get; set; }
+
+        [StringLength(150)]
+        public string? Major { get; set; }
+
+        [Range(2000, 2100)]
+        public int? GraduationYear { get; set; }
+
         [StringLength(200)]
         public string? Location { get; set; }
 

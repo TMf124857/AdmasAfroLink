@@ -46,6 +46,21 @@ namespace AdmasAfroLink.API.Models
         [MaxLength(100)]
         public string JobTitle { get; set; } = string.Empty;
 
+        [MaxLength(150)]
+        public string School { get; set; } = string.Empty;
+
+        [MaxLength(150)]
+        public string Major { get; set; } = string.Empty;
+
+        public int? GraduationYear { get; set; }
+
+        public UserRoleType RoleType { get; set; } = UserRoleType.Student;
+
+        public EmployerApprovalStatus EmployerApprovalStatus { get; set; } = EmployerApprovalStatus.NotRequired;
+
+        [MaxLength(500)]
+        public string EmployerApprovalNotes { get; set; } = string.Empty;
+
         [MaxLength(255)]
         public string LinkedInProfile { get; set; } = string.Empty;
 

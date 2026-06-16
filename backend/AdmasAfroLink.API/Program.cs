@@ -207,7 +207,7 @@ using (var scope = app.Services.CreateScope())
     await context.Database.EnsureCreatedAsync();
 
     // Create default roles
-    var roles = new[] { "Admin", "User", "Moderator" };
+    var roles = new[] { "Admin", "User", "Moderator", "Employer" };
     foreach (var role in roles)
     {
         if (!await roleManager.RoleExistsAsync(role))

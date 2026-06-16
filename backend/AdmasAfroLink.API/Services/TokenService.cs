@@ -36,7 +36,9 @@ namespace AdmasAfroLink.API.Services
                 new(ClaimTypes.GivenName, user.FirstName),
                 new(ClaimTypes.Surname, user.LastName),
                 new("IsVerified", user.IsVerified.ToString()),
-                new("IsActive", user.IsActive.ToString())
+                new("IsActive", user.IsActive.ToString()),
+                new("RoleType", user.RoleType.ToString()),
+                new("EmployerApprovalStatus", user.EmployerApprovalStatus.ToString())
             };
 
             // Add role claims

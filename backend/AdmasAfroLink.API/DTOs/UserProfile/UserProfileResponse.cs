@@ -1,3 +1,5 @@
+using AdmasAfroLink.API.Models;
+
 namespace AdmasAfroLink.API.DTOs.UserProfile
 {
     public class UserProfileResponse
@@ -9,6 +11,11 @@ namespace AdmasAfroLink.API.DTOs.UserProfile
         public string? Bio { get; set; }
         public string? Company { get; set; }
         public string? JobTitle { get; set; }
+        public string? School { get; set; }
+        public string? Major { get; set; }
+        public int? GraduationYear { get; set; }
+        public UserRoleType RoleType { get; set; }
+        public EmployerApprovalStatus EmployerApprovalStatus { get; set; }
         public string? Location { get; set; }
         public string? Country { get; set; }
         public string? PhoneNumber { get; set; }
@@ -44,6 +51,10 @@ namespace AdmasAfroLink.API.DTOs.UserProfile
         public string LastName { get; set; } = string.Empty;
         public string? Company { get; set; }
         public string? JobTitle { get; set; }
+        public string? School { get; set; }
+        public string? Major { get; set; }
+        public int? GraduationYear { get; set; }
+        public UserRoleType RoleType { get; set; }
         public string? Location { get; set; }
         public string? Country { get; set; }
         public string? ProfilePictureUrl { get; set; }
@@ -60,6 +71,9 @@ namespace AdmasAfroLink.API.DTOs.UserProfile
         public string? Bio { get; set; }
         public string? Company { get; set; }
         public string? JobTitle { get; set; }
+        public string? School { get; set; }
+        public string? Major { get; set; }
+        public int? GraduationYear { get; set; }
         public string? Location { get; set; }
         public string? Country { get; set; }
         public string? Website { get; set; }

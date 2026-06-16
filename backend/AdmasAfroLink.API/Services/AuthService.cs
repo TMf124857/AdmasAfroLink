@@ -69,6 +69,13 @@ namespace AdmasAfroLink.API.Services
                     LastName = request.LastName,
                     Location = request.Location,
                     Country = request.Country,
+                    School = request.School,
+                    Major = request.Major,
+                    GraduationYear = request.GraduationYear,
+                    RoleType = request.RoleType,
+                    EmployerApprovalStatus = request.RoleType == UserRoleType.Employer
+                        ? EmployerApprovalStatus.Pending
+                        : EmployerApprovalStatus.NotRequired,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow
                 };
@@ -83,8 +90,14 @@ namespace AdmasAfroLink.API.Services
                     };
                 }
 
-                // Add user to default role
-                await _userManager.AddToRoleAsync(user, "User");
+                // Add user to role
+                var roleName = request.RoleType switch
+                {
+                    UserRoleType.Employer => "Employer",
+                    UserRoleType.Admin => "Admin",
+                    _ => "User"
+                };
+                await _userManager.AddToRoleAsync(user, roleName);
 
                 // Generate email confirmation token
                 var emailToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -138,6 +151,15 @@ namespace AdmasAfroLink.API.Services
                     {
                         Success = false,
                         Message = "Your account has been deactivated. Please contact support."
+                    };
+                }
+
+                if (user.RoleType == UserRoleType.Employer && user.EmployerApprovalStatus != EmployerApprovalStatus.Approved)
+                {
+                    return new AuthResponseDto
+                    {
+                        Success = false,
+                        Message = "Employer account is pending approval."
                     };
                 }
 
@@ -195,6 +217,8 @@ namespace AdmasAfroLink.API.Services
                         FirstName = request.FirstName,
                         LastName = request.LastName,
                         ProfilePictureUrl = request.ProfilePictureUrl,
+                        RoleType = UserRoleType.Student,
+                        EmployerApprovalStatus = EmployerApprovalStatus.NotRequired,
                         EmailConfirmed = true, // Trust external provider
                         CreatedAt = DateTime.UtcNow,
                         UpdatedAt = DateTime.UtcNow
