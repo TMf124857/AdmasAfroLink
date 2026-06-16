@@ -1,260 +1,118 @@
-# AdmasAfroLink - Odoo Enterprise Platform
+# AdmasAfroLink
 
-Complete Docker-based Odoo Enterprise setup with automated deployment agent for seamless development-to-production workflow.
+Practical guide for setting up and using the AdmasAfroLink platform (frontend + backend + database) in development.
 
-## 🚀 Quick Start
+## What this repository contains
 
-### Local Development
-1. **Clone and setup:**
+- `frontend/` - Next.js web app
+- `backend/AdmasAfroLink.API/` - ASP.NET Core API
+- `docker-compose.integrated.yml` - Integrated local stack
+- `deploy-integrated.sh` / `deploy-integrated.ps1` - Helper scripts to run the stack
+
+## Prerequisites
+
+- Docker + Docker Compose
+- Node.js 18+ (for frontend local runs)
+- .NET SDK 9 (for backend local runs)
+
+## Quick start (recommended)
+
+1. Clone and enter the repo:
    ```bash
+   git clone <repository-url>
    cd AdmasAfroLink
+   ```
+2. Create environment file:
+   ```bash
    cp .env.example .env
    ```
+3. Start integrated services:
+   - Linux/macOS:
+     ```bash
+     chmod +x deploy-integrated.sh
+     ./deploy-integrated.sh start dev
+     ```
+   - Windows (PowerShell):
+     ```powershell
+     .\deploy-integrated.ps1 start dev
+     ```
 
-2. **Start services:**
-   ```bash
-   docker-compose up -d
-   ```
+## Service URLs (dev profile)
 
-3. **Access Odoo:**
-   - Odoo: http://localhost:8069
-   - Default credentials: admin / admin123
+- Frontend: http://localhost:3000
+- API: http://localhost:7001
+- pgAdmin: http://localhost:5050
+- Redis Commander: http://localhost:8081
+- Portainer: http://localhost:9000
 
-### Automated Deployment
-1. **Configure deployment:**
-   ```bash
-   # Edit server details
-   nano deployment-agent.conf
-   ```
+## How to use day-to-day
 
-2. **Deploy to server:**
-   ```bash
-   ./deploy deploy
-   ```
+### Script commands
 
-3. **Auto-deployment mode:**
-   ```bash
-   ./deploy auto
-   ```
+- Check status:
+  ```bash
+  ./deploy-integrated.sh status
+  ```
+- View logs:
+  ```bash
+  ./deploy-integrated.sh logs
+  ./deploy-integrated.sh logs api
+  ```
+- Health check:
+  ```bash
+  ./deploy-integrated.sh health
+  ```
+- Restart:
+  ```bash
+  ./deploy-integrated.sh restart dev
+  ```
+- Stop:
+  ```bash
+  ./deploy-integrated.sh stop
+  ```
+- Cleanup (removes data/volumes):
+  ```bash
+  ./deploy-integrated.sh cleanup
+  ```
 
-## 📁 Project Structure
+## Alternative local development (without Docker)
 
-```
-AdmasAfroLink/
-├── docker-compose.yml          # Docker Compose configuration
-├── .env / .env.example         # Environment variables
-├── deploy                      # Deployment agent launcher
-├── deployment-agent.sh         # Main deployment automation script
-├── deployment-agent.conf       # Deployment configuration
-├── DEPLOYMENT-AGENT-GUIDE.md   # Deployment guide
-├── config/
-│   └── odoo.conf              # Odoo configuration
-├── nginx/
-│   └── nginx.conf             # Nginx configuration
-├── addons/                    # Custom Odoo addons
-├── enterprise/                # Enterprise addons
-├── extract-enterprise-addons.sh # Enterprise addon extractor
-├── ENTERPRISE-CONVERSION-GUIDE.md # Enterprise development guide
-└── enterprise-oop-examples.py  # OOP examples for Odoo
-```
+### Backend
 
-## 🤖 Deployment Agent Features
-
-- **Automated Git operations** - Commit, push, and deploy changes
-- **Server health monitoring** - Continuous health checks
-- **Auto-deployment mode** - Watch for changes and deploy automatically  
-- **Rollback capability** - Easy rollback to previous versions
-- **Enterprise addon support** - Automated enterprise module extraction
-- **Multi-environment support** - Development, staging, production
-
-## 📖 Documentation
-
-- `DEPLOYMENT-AGENT-GUIDE.md` - Complete deployment automation guide
-- `ENTERPRISE-CONVERSION-GUIDE.md` - Odoo enterprise development guide
-- `enterprise-oop-examples.py` - OOP patterns for Odoo development
-
-## 🏗️ Services Overview
-
-### Core Services
-- **Odoo**: Main application server (Port 8069)
-- **PostgreSQL**: Database server (Port 5432)
-- **Redis**: Session storage and caching (Port 6379)
-
-### Optional Services (Profiles)
-- **pgAdmin**: Database administration tool (Port 5050) - Profile: `tools`
-- **Nginx**: Reverse proxy with SSL support (Ports 80/443) - Profile: `proxy`
-
-## 🔧 Configuration
-
-### Environment Variables
-Edit the `.env` file to customize your deployment:
-
-```env
-# Database Configuration
-POSTGRES_DB=odoo
-POSTGRES_USER=odoo
-POSTGRES_PASSWORD=odoo123
-
-# pgAdmin Configuration
-PGADMIN_EMAIL=admin@example.com
-PGADMIN_PASSWORD=admin123
-```
-
-### Odoo Configuration
-The `config/odoo.conf` file contains Odoo-specific settings. Key configurations:
-- Database connection settings
-- Worker processes
-- Memory limits
-- Logging configuration
-- Session management with Redis
-
-## 🚦 Starting Services
-
-### Start all core services:
 ```bash
-docker-compose up -d
+cd backend/AdmasAfroLink.API
+dotnet restore
+dotnet run
 ```
 
-### Start with optional tools (pgAdmin):
+### Frontend
+
 ```bash
-docker-compose --profile tools up -d
+cd frontend
+npm install
+npm run dev
 ```
 
-### Start with reverse proxy (Nginx):
+## Build and test
+
+### Backend
+
 ```bash
-docker-compose --profile proxy up -d
+dotnet restore
+dotnet build --no-restore --configuration Release
+dotnet test --no-build --configuration Release
 ```
 
-### Start everything:
+### Frontend
+
 ```bash
-docker-compose --profile tools --profile proxy up -d
+cd frontend
+npm install
+npm run type-check
+npm run build
 ```
 
-## 📊 Monitoring and Management
+## Notes
 
-### View logs:
-```bash
-# All services
-docker-compose logs -f
-
-# Specific service
-docker-compose logs -f odoo
-```
-
-### Check service status:
-```bash
-docker-compose ps
-```
-
-### Access containers:
-```bash
-# Odoo container
-docker-compose exec odoo bash
-
-# Database container
-docker-compose exec db psql -U odoo -d odoo
-```
-
-## 🔒 Security Considerations
-
-### For Production Deployment:
-
-1. **Change default passwords** in `.env` file
-2. **Enable SSL** by configuring certificates in `nginx/ssl/`
-3. **Set proper database filters** in `config/odoo.conf`
-4. **Disable development mode** in `config/odoo.conf`
-5. **Configure proper email settings**
-
-### SSL Setup:
-1. Place your SSL certificates in `nginx/ssl/`
-2. Uncomment the HTTPS server block in `nginx/nginx.conf`
-3. Update the `.env` file to enable SSL
-
-## 📦 Adding Custom Addons
-
-1. **Community addons**: Place in `./addons/` directory
-2. **Enterprise addons**: Place in `./enterprise/` directory
-3. **Restart Odoo** to load new addons:
-   ```bash
-   docker-compose restart odoo
-   ```
-
-## 🗄️ Database Management
-
-### Backup database:
-```bash
-docker-compose exec db pg_dump -U odoo odoo > backup.sql
-```
-
-### Restore database:
-```bash
-docker-compose exec -T db psql -U odoo odoo < backup.sql
-```
-
-### Access pgAdmin:
-1. Start with tools profile: `docker-compose --profile tools up -d`
-2. Navigate to http://localhost:5050
-3. Login with credentials from `.env` file
-4. Add server connection:
-   - Host: `db`
-   - Port: `5432`
-   - Database: `odoo`
-   - Username/Password: from `.env` file
-
-## 🔧 Troubleshooting
-
-### Common Issues:
-
-1. **Port conflicts**: Ensure ports 8069, 5432, 6379 are available
-2. **Permission issues**: Check file permissions in mounted volumes
-3. **Database connection**: Verify PostgreSQL is running and accessible
-4. **Memory issues**: Adjust worker and memory settings in `odoo.conf`
-5. **Log directory error**: Create logs directory with proper permissions:
-   ```bash
-   mkdir -p logs
-   chmod 755 logs
-   ```
-6. **Redis memory warning**: Enable memory overcommit (Ubuntu):
-   ```bash
-   echo 'vm.overcommit_memory = 1' | sudo tee -a /etc/sysctl.conf
-   sudo sysctl vm.overcommit_memory=1
-   ```
-
-### Useful Commands:
-```bash
-# Restart all services
-docker-compose restart
-
-# Rebuild and restart specific service
-docker-compose up -d --build odoo
-
-# Remove all containers and volumes (CAUTION: Data loss)
-docker-compose down -v
-
-# View resource usage
-docker stats
-```
-
-## 📋 Production Checklist
-
-- [ ] Change all default passwords
-- [ ] Configure SSL certificates
-- [ ] Set up regular database backups
-- [ ] Configure email settings
-- [ ] Set proper memory limits
-- [ ] Enable monitoring and logging
-- [ ] Configure firewall rules
-- [ ] Set up domain name and DNS
-- [ ] Test disaster recovery procedures
-
-## 🤝 Support
-
-For issues and questions:
-1. Check the logs: `docker-compose logs -f`
-2. Verify configuration files
-3. Ensure all required ports are available
-4. Check Odoo official documentation
-
----
-
-**Note**: This setup is configured for development by default. Please review and adjust all security settings before using in production.
+- If `npm run lint` prompts ESLint setup, add an ESLint config to `frontend/` first.
+- Review `.env` values before running in non-development environments.
